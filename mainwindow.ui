@@ -1,0 +1,4100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>7000</width>
+    <height>2000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="widget_pantalla_ajustes_widget_colores" native="true">
+    <property name="geometry">
+     <rect>
+      <x>4290</x>
+      <y>690</y>
+      <width>535</width>
+      <height>652</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente_4.png);</string>
+    </property>
+    <widget class="QLabel" name="l_widget_colores_text">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>60</y>
+       <width>271</width>
+       <height>73</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+border-image: url(:/icons/fondo_transparente.png);
+font: 22pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>Seleccione color</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_naranja">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>170</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_azul">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>170</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 200, 255);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_rojo">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>170</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 10, 10);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_amarillo">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>290</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 0);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_verde">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>170</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 255, 0);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_cancelar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>490</y>
+       <width>251</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(0, 0, 0);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>cancelar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_ECG_Curva">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_widget_colores_color_seleccionado">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>531</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_ECG_fondo">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_Oxy1_Curva">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_Oxy1_fondo">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_Oxy2_Curva">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_aceptar_Oxy2_fondo">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>500</y>
+       <width>250</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 18pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(241, 90, 36);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>aceptar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_negro">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>290</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 0, 0);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_violeta">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>290</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(120, 70, 150);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_rosado">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>290</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(200, 0, 100);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_colores_gris">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>80</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(180, 180, 180);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_paciente_datos" native="true">
+    <property name="geometry">
+     <rect>
+      <x>4270</x>
+      <y>10</y>
+      <width>535</width>
+      <height>652</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente_4.png);</string>
+    </property>
+    <widget class="QLabel" name="l_paciente_datos_nombre">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>130</y>
+       <width>311</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>Maria  Vargas  de   la  Fuente</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_paciente_datos_ID">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>210</y>
+       <width>221</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>98091708093</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_paciente_datos_sexo">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>270</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>f</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_paciente_datos_fecha_nacimiento">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>330</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>17/9/98</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_paciente_datos_pruebas">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>400</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_paciente_datos_estado">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>460</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string>Seguimiento</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_paciente_datos_Borrar_paciente">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>40</y>
+       <width>123</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_4_boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>40</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 20pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 24pt &quot;Alegreya Sans&quot;;
+color: rgb(20, 20, 20);</string>
+     </property>
+     <property name="text">
+      <string>Paciente</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>70</width>
+       <height>5</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/filete.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>210</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>ID:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_76">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>130</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Nombre:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_77">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>270</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Sexo:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_78">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>330</y>
+       <width>271</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Fecha de nacimiento:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_79">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>400</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Pruebas:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_92">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>460</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Estado:</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_paciente_datos_Ver_Registro_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>490</y>
+       <width>241</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_paciente_datos_Ver_Registro">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>540</y>
+       <width>166</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/button_pant_datos_ver_registro.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_paciente_datos_Nuevo_Test_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>490</y>
+       <width>231</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_paciente_datos_Nuevo_Test">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>540</y>
+       <width>141</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/button_pant_datos_nuevo_test.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_proseguir_test_paciente" native="true">
+    <property name="geometry">
+     <rect>
+      <x>3890</x>
+      <y>490</y>
+      <width>403</width>
+      <height>208</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente_2.png);</string>
+    </property>
+    <widget class="QLabel" name="label_67">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>30</y>
+       <width>238</width>
+       <height>73</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ventana_emergente_2_texto.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_WIDGET_proseuir_test_cancelar">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>130</y>
+       <width>93</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_2_boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_widget_PROSEGUIR_TEST">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>130</y>
+       <width>70</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_2_boton_2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel_Button" name="pb_pant_gris_blur_plus">
+    <property name="geometry">
+     <rect>
+      <x>1290</x>
+      <y>1050</y>
+      <width>1280</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/icons/background_gray_plus.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_menu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>3880</x>
+      <y>240</y>
+      <width>283</width>
+      <height>239</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente.png);</string>
+    </property>
+    <widget class="QLabel_Button" name="pb_menu_acerca_de_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_menu_ayuda_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_menu_salir_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_menu_acerca_de">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>156</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_menu_ayuda">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>100</y>
+       <width>118</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_boton_2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_menu_salir">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>160</y>
+       <width>97</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_boton_3.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_pantalla_ajustes" native="true">
+    <property name="geometry">
+     <rect>
+      <x>4830</x>
+      <y>10</y>
+      <width>2121</width>
+      <height>1718</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/icons/pantalla_4_fondo.png);</string>
+    </property>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_generales_Generales">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>460</y>
+       <width>234</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/generales_boton.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_generales_ECG">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>594</y>
+       <width>138</width>
+       <height>77</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ECG_boton.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_generales_Oxymetria">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>669</y>
+       <width>230</width>
+       <height>54</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/oximetria_boton.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_ajustes_generales_Generales" native="true">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>500</y>
+       <width>451</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <widget class="QLabel_Button" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>325</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/icons/pantalla_principal_sin_seleccion.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_label_neonato">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string>neonato</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Canales de Oximetría</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Paciente</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>175</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/icons/pantalla_principal_sin_seleccion.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_Oxy_3">
+      <property name="geometry">
+       <rect>
+        <x>256</x>
+        <y>40</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_Oxy_2">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>60</y>
+        <width>30</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>30</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/boton.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_Oxy">
+      <property name="geometry">
+       <rect>
+        <x>276</x>
+        <y>60</y>
+        <width>87</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>87</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>87</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label_2.png);</string>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_0">
+      <property name="geometry">
+       <rect>
+        <x>276</x>
+        <y>90</y>
+        <width>114</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_1">
+      <property name="geometry">
+       <rect>
+        <x>276</x>
+        <y>120</y>
+        <width>114</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_caneles_2">
+      <property name="geometry">
+       <rect>
+        <x>276</x>
+        <y>150</y>
+        <width>114</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_label_adulto">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>10</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string>adulto</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Tiempo de Ventana</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_generales_tiempo_de_ventana">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>140</y>
+        <width>151</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>4-32</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_generales_Visualizacion">
+     <property name="geometry">
+      <rect>
+       <x>211</x>
+       <y>515</y>
+       <width>280</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/visualizacion_boton.png);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_ajustes_generales_visualizacion" native="true">
+     <property name="geometry">
+      <rect>
+       <x>980</x>
+       <y>570</y>
+       <width>841</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <widget class="QLabel" name="l_widget_ajustes_generales_color_EKG">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Color del  ECG</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_EKG_curva">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>10</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 255, 0);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l_widget_ajustes_generales_color_Oxy1">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Color del  primer canal de SpO2</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l_widget_ajustes_generales_color_Oxy2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Color del  segundo canal de SpO2</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy1_curva">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>60</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 200, 255);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy2_curva">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>110</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 200, 255);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_EKG_fondo">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy1_fondo">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>60</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy2_fondo">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>110</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+background-image: url(:/icons/fondo_transparente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_EKG_curva_2">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>0</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Curva</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_EKG_fondo_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>0</y>
+        <width>281</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Fondo</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy1_fondo_2">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>50</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Fondo</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy1_curva_2">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>50</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Curva</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy2_fondo_2">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>100</y>
+        <width>241</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Fondo</string>
+      </property>
+     </widget>
+     <widget class="QLabel_Button" name="pb_widget_ajustes_generales_color_Oxy2_curva_2">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>100</y>
+        <width>91</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Curva</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_ajustes_generales_ECG" native="true">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>750</y>
+       <width>691</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <widget class="QLabel" name="pb_widget_ajustes_generales_lim_braqui">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>231</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Límite de braquicardia</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_generales_lim_taqui">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>241</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Límite de taquicardia</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_generales_lim_latidos_prematuros">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>401</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Límite de frecuencia de latidos prematuros</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_generales_QT_prolongado">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>171</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>QT prolongado</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_generales_max_dispersion">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>401</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Maxima dispersión temporal permisible</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_ECG_lim_braqui">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>10</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>80-120</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_ECG_lim_taqui">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>60</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>hasta 300</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_ECG_lim_latidos_prematuros">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>110</y>
+        <width>71</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>1-10</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_ECG_QT_prolongado">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>160</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>250-500</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_ECG_max_dispersion">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>210</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>250-500</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget_ajustes_generales_Oximetria" native="true">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>730</y>
+       <width>571</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <widget class="QLabel" name="pb_widget_ajustes_oximetria_max_dif_extremidades">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>381</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Maxima diferencia entre extremidades</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_oximetria_lim_baja_oxy">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Límite de baja Oximetría</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_oximetria_lim_Pwtt">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Límite de PWTT</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pb_widget_ajustes_oximetria_amp_spo2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);</string>
+      </property>
+      <property name="text">
+       <string>Amplitud de SpO2</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_oximetria_max_dif_extremidades">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>10</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>1-5</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_oximetria_lim_baja_oxy">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>60</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string>80-99</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_oximetria_lim_Pwtt">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>110</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_widget_ajustes_oximetria_amp_spo2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>160</y>
+        <width>133</width>
+        <height>37</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;Alegreya Sans&quot;;
+color: rgb(130, 130, 130);
+background-image: url(:/icons/fondo_transparente.png);
+border-image: url(:/icons/label.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_menu_2">
+     <property name="geometry">
+      <rect>
+       <x>1190</x>
+       <y>0</y>
+       <width>91</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_menu">
+     <property name="geometry">
+      <rect>
+       <x>1230</x>
+       <y>30</y>
+       <width>6</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/boton_menu.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_ajustes_atras">
+     <property name="geometry">
+      <rect>
+       <x>1010</x>
+       <y>20</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/icons/fondo_transparente.png);
+color: rgb(255, 255, 255);
+font: 81 17pt &quot;Alegreya Sans SC ExtraBold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>ATRÁS</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>272</x>
+       <y>190</y>
+       <width>51</width>
+       <height>5</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/filete.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pantalla_ajustes_ID">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>230</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 14pt &quot;Alegreya Sans Light&quot;;
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>98061589320</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_128">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>150</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 20pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(80, 80, 80);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>Prueba</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_129">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>350</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>Fecha de nacimiento:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pantalla_ajustes_fecha_nacimiento">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>350</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 14pt &quot;Alegreya Sans Light&quot;;
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>17/9/98</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_131">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>230</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>ID:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pantalla_ajustes_sexo">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>290</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 14pt &quot;Alegreya Sans Light&quot;;
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>femenino</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_133">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>290</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>Sexo:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pantalla_ajustes_nombre">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>150</y>
+       <width>381</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 16pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>Maria Vargas de  la Fuente</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_ajuste_barra_expansion_Generales">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>490</y>
+       <width>1</width>
+       <height>57</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ECG_oximetria_corondel.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_ajuste_barra_expansion_Visualizacion">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>560</y>
+       <width>1</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ECG_oximetria_corondel.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_ajuste_barra_expansion_ECG">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>640</y>
+       <width>1</width>
+       <height>59</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ECG_oximetria_corondel.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+background-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_borrar_paciente" native="true">
+    <property name="geometry">
+     <rect>
+      <x>3870</x>
+      <y>700</y>
+      <width>403</width>
+      <height>208</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente_2.png);</string>
+    </property>
+    <widget class="QLabel" name="label_68">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>30</y>
+       <width>238</width>
+       <height>73</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/ventana_emergente_3_texto.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_borrar_paciente_si_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_borrar_paciente_si_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>130</y>
+       <width>19</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_3_boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_borrar_paciente_no_3">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>100</y>
+       <width>161</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_borrar_paciente_no_4">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>130</y>
+       <width>29</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/ventana_emergente_3_boton_2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_pantalla_test" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>1042</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/pantalla_terciaria_fondo.png);</string>
+    </property>
+    <widget class="QLabel_Button" name="pb_pant_test_atras">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>12</y>
+       <width>181</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(255, 255, 255);
+font: 81 17pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 24pt &quot;Alegreya Sans&quot;;</string>
+     </property>
+     <property name="text">
+      <string>ATRÁS</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_97">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>520</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 75 22pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>ECG</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_98">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>660</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 75 22pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Oxy 1</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_99">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>800</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 75 22pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Oxy 2</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_100">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>150</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 81 26pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 27pt &quot;Alegreya Sans&quot;;
+color: rgb(80, 80, 80);</string>
+     </property>
+     <property name="text">
+      <string>Prueba</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_test_nombre">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>150</y>
+       <width>451</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 24pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Maria Vargas de  la Fuente</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_102">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>230</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>ID:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_103">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>290</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Sexo:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_test_sexo">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>290</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 19pt &quot;Alegreya Sans Light&quot;;</string>
+     </property>
+     <property name="text">
+      <string>femenino</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_105">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>350</y>
+       <width>271</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>Fecha de nacimiento:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_test_fecha_nacimiento">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>350</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 19pt &quot;Alegreya Sans Light&quot;;</string>
+     </property>
+     <property name="text">
+      <string>17/9/98</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_fecha">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>127</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>4/06/19</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_hora">
+     <property name="geometry">
+      <rect>
+       <x>991</x>
+       <y>150</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>9:01 pm</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_porciento_circle_progress">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>210</y>
+       <width>178</width>
+       <height>178</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_porciento_value">
+     <property name="geometry">
+      <rect>
+       <x>1025</x>
+       <y>275</y>
+       <width>131</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 36pt &quot;Alegreya Sans SC Medium&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>0%</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_Graficar_Iniciar">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>920</y>
+       <width>228</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 81 22pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 1pt &quot;Alegreya Sans&quot;;
+color: rgb(0, 0, 0);
+border-image: url(:/icons/button_graficar.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>GRAFICAR</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_Ver_Registro_Guardar">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>920</y>
+       <width>228</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 81 22pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 1pt &quot;Alegreya Sans&quot;;
+color: rgb(150, 150, 150);
+border-image: url(:/icons/button_guardar.png);</string>
+     </property>
+     <property name="text">
+      <string>GUARDAR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_109">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>510</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>HR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_110">
+     <property name="geometry">
+      <rect>
+       <x>1130</x>
+       <y>510</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>bpm</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_HR_ECG">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>510</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>72</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_HR_Oxy1">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>625</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>72</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_115">
+     <property name="geometry">
+      <rect>
+       <x>980</x>
+       <y>670</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>SpO2</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_SpO2_Oxy1">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>670</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>99%</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_PI_Oxy1">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>710</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>5%</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_118">
+     <property name="geometry">
+      <rect>
+       <x>1020</x>
+       <y>710</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>PI</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_menu">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>0</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_menu_2">
+     <property name="geometry">
+      <rect>
+       <x>1200</x>
+       <y>30</y>
+       <width>6</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/boton_menu.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_test_ID">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>230</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);
+font: 25 19pt &quot;Alegreya Sans Light&quot;;</string>
+     </property>
+     <property name="text">
+      <string>98061589320</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_PI_Oxy2">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>850</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>5%</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_HR_Oxy2">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>765</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>72</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_SpO2_Oxy2">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>810</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 19pt &quot;Alegreya Sans&quot;;
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>99%</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>262</x>
+       <y>190</y>
+       <width>51</width>
+       <height>5</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/filete.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_ajustes_2">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>90</y>
+       <width>201</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_ajustes">
+     <property name="geometry">
+      <rect>
+       <x>1140</x>
+       <y>130</y>
+       <width>47</width>
+       <height>47</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/pantalla_terciaria_boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_111">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>620</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>HR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_112">
+     <property name="geometry">
+      <rect>
+       <x>1130</x>
+       <y>620</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>bpm</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_119">
+     <property name="geometry">
+      <rect>
+       <x>1020</x>
+       <y>850</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>PI</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_113">
+     <property name="geometry">
+      <rect>
+       <x>1130</x>
+       <y>760</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>bpm</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_114">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>760</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>HR</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_116">
+     <property name="geometry">
+      <rect>
+       <x>980</x>
+       <y>810</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>SpO2</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_electrodo_rojo">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>930</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/electrodo_rojo.png);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_electrodo_verde">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>930</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/electrodo_verde.png);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_electrodo_amarillo">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>930</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/electrodo_amarillo.png);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_pause_play">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>390</y>
+       <width>281</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 81 22pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 24pt &quot;Alegreya Sans&quot;;
+color: rgb(0, 0, 0);
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="assets.qrc">:/icons/button_pausar.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pant_test_tiempo_de_prueba">
+     <property name="geometry">
+      <rect>
+       <x>516</x>
+       <y>432</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+font: 57 14pt &quot;Alegreya Sans Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_maximize_oxy1">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>450</y>
+       <width>91</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/plusOXY1.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_maximize_oxy2">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>450</y>
+       <width>91</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/plusOXY2.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_test_maximize_ecg">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>450</y>
+       <width>91</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/plusECG.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+     </property>
+    </widget>
+    <zorder>pb_pant_test_ajustes</zorder>
+    <zorder>label_5</zorder>
+    <zorder>pb_pant_test_atras</zorder>
+    <zorder>label_97</zorder>
+    <zorder>label_98</zorder>
+    <zorder>label_99</zorder>
+    <zorder>label_100</zorder>
+    <zorder>l_test_nombre</zorder>
+    <zorder>label_102</zorder>
+    <zorder>label_103</zorder>
+    <zorder>l_test_sexo</zorder>
+    <zorder>label_105</zorder>
+    <zorder>l_test_fecha_nacimiento</zorder>
+    <zorder>pb_pant_test_fecha</zorder>
+    <zorder>pb_pant_test_hora</zorder>
+    <zorder>l_pant_test_porciento_circle_progress</zorder>
+    <zorder>l_pant_test_porciento_value</zorder>
+    <zorder>pb_pant_test_Graficar_Iniciar</zorder>
+    <zorder>pb_pant_test_Ver_Registro_Guardar</zorder>
+    <zorder>label_109</zorder>
+    <zorder>label_110</zorder>
+    <zorder>l_HR_ECG</zorder>
+    <zorder>l_HR_Oxy1</zorder>
+    <zorder>label_115</zorder>
+    <zorder>l_SpO2_Oxy1</zorder>
+    <zorder>l_PI_Oxy1</zorder>
+    <zorder>label_118</zorder>
+    <zorder>pb_pant_test_menu</zorder>
+    <zorder>pb_pant_test_menu_2</zorder>
+    <zorder>l_test_ID</zorder>
+    <zorder>l_PI_Oxy2</zorder>
+    <zorder>l_HR_Oxy2</zorder>
+    <zorder>l_SpO2_Oxy2</zorder>
+    <zorder>pb_pant_test_ajustes_2</zorder>
+    <zorder>label_111</zorder>
+    <zorder>label_112</zorder>
+    <zorder>label_119</zorder>
+    <zorder>label_113</zorder>
+    <zorder>label_114</zorder>
+    <zorder>label_116</zorder>
+    <zorder>l_pant_test_electrodo_rojo</zorder>
+    <zorder>l_pant_test_electrodo_verde</zorder>
+    <zorder>l_pant_test_electrodo_amarillo</zorder>
+    <zorder>pb_pant_test_pause_play</zorder>
+    <zorder>l_pant_test_tiempo_de_prueba</zorder>
+    <zorder>pb_pant_test_maximize_oxy1</zorder>
+    <zorder>pb_pant_test_maximize_oxy2</zorder>
+    <zorder>pb_pant_test_maximize_ecg</zorder>
+   </widget>
+   <widget class="QLabel_Button" name="pb_pant_gris_blur">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>1050</y>
+      <width>1280</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/icons/background_gray.png);
+border-image: url(:/icons/fondo_transparente.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_cartel_information" native="true">
+    <property name="geometry">
+     <rect>
+      <x>3890</x>
+      <y>960</y>
+      <width>403</width>
+      <height>208</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/ventana_emergente_2.png);</string>
+    </property>
+    <widget class="QLabel" name="l_cartel_information">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>371</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 24pt &quot;Alegreya Sans Medium&quot;;
+color: rgb(50, 50, 50);
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string>Cartel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_pantalla_paciente" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1290</x>
+      <y>240</y>
+      <width>1280</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/pantalla_principal_fondo.png);</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>160</y>
+       <width>51</width>
+       <height>5</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/filete.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>290</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 19pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>NOMBRE</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>370</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 19pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>      ID</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>447</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 19pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>   SEXO</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>510</y>
+       <width>191</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 19pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>NATALICIO</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_nuevo">
+     <property name="geometry">
+      <rect>
+       <x>75</x>
+       <y>84</y>
+       <width>281</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="assets.qrc">:/icons/boton_1.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_base_de_datos">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>84</y>
+       <width>321</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="assets.qrc">:/icons/boton_2.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_radioB_femenino">
+     <property name="geometry">
+      <rect>
+       <x>407</x>
+       <y>455</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/pantalla_principal_sin_seleccion.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_label_femenino">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>440</y>
+       <width>151</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>femenino</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_radioB_masculino">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>455</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/pantalla_principal_sin_seleccion.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_label_masculino">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>434</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 16pt &quot;Alegreya Sans SC Medium&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string>masculino</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_pant_paciente_Nombre">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>285</y>
+       <width>611</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(130, 130, 130);
+font: 57 16pt &quot;Alegreya Sans Medium&quot;;
+font: 25 22pt &quot;Alegreya Sans Light&quot;;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_pant_paciente_ID">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>365</y>
+       <width>611</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(130, 130, 130);
+font: 57 16pt &quot;Alegreya Sans Medium&quot;;
+font: 25 22pt &quot;Alegreya Sans Light&quot;;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="pb_pant_paciente_fecha_nacimiento">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>530</y>
+       <width>281</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 19pt &quot;Alegreya Sans SC Medium&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(130, 130, 130);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="pb_pant_paciente_fecha_nacimiento_2">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>540</y>
+       <width>23</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 12pt &quot;Alegreya Sans SC Medium&quot;;
+border-image: url(:/icons/pantalla_principal_mas.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_descartar">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>650</y>
+       <width>202</width>
+       <height>57</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 12pt &quot;Alegreya Sans SC Medium&quot;;
+border-image: url(:/icons/button_descartar.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_test">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>650</y>
+       <width>200</width>
+       <height>55</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 57 12pt &quot;Alegreya Sans SC Medium&quot;;
+border-image: url(:/icons/button_test.png);
+color: rgb(50, 50, 50);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_fecha_actual">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>110</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>4/06/19</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_hora_actual">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>130</y>
+       <width>151</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>9:01 pm</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_menu_2">
+     <property name="geometry">
+      <rect>
+       <x>1190</x>
+       <y>10</y>
+       <width>91</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_menu">
+     <property name="geometry">
+      <rect>
+       <x>1240</x>
+       <y>30</y>
+       <width>6</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/boton_menu.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_paciente_conectar">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>0</y>
+       <width>241</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 81 19pt &quot;Alegreya Sans SC ExtraBold&quot;;
+font: 20pt &quot;Alegreya Sans&quot;;
+color: rgb(0, 0, 0);
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>CONECTAR</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_pant_base_de_Datos" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>2580</x>
+      <y>240</y>
+      <width>1280</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons/pantalla_secundaria.png);</string>
+    </property>
+    <widget class="QListWidget" name="lw_pant_base_de_datos_pacientes">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>271</y>
+       <width>1111</width>
+       <height>441</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);
+color: rgb(130, 130, 130);
+font: 57 15pt &quot;Alegreya Sans Medium&quot;;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>98012628901              Amy Gelis Lopez                                   f                                 19/7/98                                           2                        Seguimiento</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_90">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>160</y>
+       <width>125</width>
+       <height>5</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/filete.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_pant_base_de_datos_buscar">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>40</y>
+       <width>299</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+border-image: url(:/icons/pantalla_secundaria_buscar.png);
+font: 57 italic 18pt &quot;Alegreya Sans Medium&quot;;</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_menu_2">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>0</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_menu">
+     <property name="geometry">
+      <rect>
+       <x>1230</x>
+       <y>30</y>
+       <width>6</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/boton_menu.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_buscar">
+     <property name="geometry">
+      <rect>
+       <x>1058</x>
+       <y>30</y>
+       <width>32</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/icono_2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_hora">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>130</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>9:01 pm</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_fecha">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>110</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Alegreya Sans&quot;;
+border-image: url(:/icons/fondo_transparente.png);
+color: gb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>4/06/19</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_nuevo_2">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>90</y>
+       <width>281</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_nuevo">
+     <property name="geometry">
+      <rect>
+       <x>232</x>
+       <y>120</y>
+       <width>114</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/boton_1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_respaldar">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>90</y>
+       <width>241</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 81 19pt &quot;Alegreya Sans SC ExtraBold&quot;;
+color: rgb(0, 0, 0);
+border-image: url(:/icons/fondo_transparente.png);
+color: rgb(241, 90, 36);</string>
+     </property>
+     <property name="text">
+      <string>RESPALDAR</string>
+     </property>
+    </widget>
+    <widget class="QLabel_Button" name="pb_pant_base_de_datos_base_Datos">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>80</y>
+       <width>321</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/icons/fondo_transparente.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="assets.qrc">:/icons/boton_2.png</pixmap>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QLabel_Button</class>
+   <extends>QLabel</extends>
+   <header location="global">qlabel_button.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="assets.qrc"/>
+ </resources>
+ <connections/>
+</ui>
