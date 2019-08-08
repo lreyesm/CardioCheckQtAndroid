@@ -60,6 +60,33 @@ public:
 
     void show_menu();
 
+    int paint_now = 0;
+protected:
+
+    void paintEvent(QPaintEvent *event){  ///divide la cantidad de repaints del widget
+
+        if(paint_now >= 10){
+            QWidget::paintEvent(event);
+            paint_now = 0;
+        }
+        else{
+            paint_now++;
+        }
+    }
+
+    void mousePressEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
+    {
+        emit mouse_pressed();
+    }
+    void mouseDoubleClickEvent(QMouseEvent *e){
+
+        emit mouse_DoubleClick();
+    }
+    void mouseReleaseEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
+    {
+        emit mouse_Release();
+    }
+
 
 private slots:
 
@@ -97,19 +124,6 @@ signals:
     void data_Received(QByteArray);
 
 private slots:
-
-    void mousePressEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
-    {
-        emit mouse_pressed();
-    }
-    void mouseDoubleClickEvent(QMouseEvent *e){
-
-        emit mouse_DoubleClick();
-    }
-    void mouseReleaseEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
-    {
-        emit mouse_Release();
-    }
 
     void on_drag_screen();
     void on_start_scrolling_screen_test_timeout();

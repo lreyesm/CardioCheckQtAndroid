@@ -1,0 +1,24 @@
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\bin\QtApp-debug-unaligned.apk : \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\bin\QtApp.ap_ \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\bin\classes.dex \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\QtAndroidBluetooth-bundled.jar \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\QtAndroid-bundled.jar \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\gdbserver \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libCardioCheck.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libgdbserver.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libgnustl_shared.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqgif.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqicns.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqico.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqjpeg.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqtga.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqtiff.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqwbmp.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_imageformats_libqwebp.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libplugins_platforms_android_libqtforandroid.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5AndroidExtras.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5Bluetooth.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5Core.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5Gui.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5PrintSupport.so \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\libs\armeabi-v7a\libQt5Widgets.so \

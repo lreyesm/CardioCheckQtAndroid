@@ -104,5 +104,6 @@
         <file>icons/ventana_emergente_boton_3.png</file>
         <file>icons/visualizacion_boton.png</file>
         <file>icons/visualizacion_ECG_corondel.png</file>
+        <file>icons/recycler_bin.png</file>
     </qresource>
 </RCC>

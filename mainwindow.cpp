@@ -857,19 +857,19 @@ void MainWindow::afterUpdateGraph()
     //--------------------------------------------------------------------------------------------------------------------------------------
     if(picar_frec >= 3){
         ///if(customPlot_graph_Oxy2_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
-            customPlot_graph_Oxy1->replot();//QCustomPlot::rpHint);
+        customPlot_graph_Oxy1->replot();//QCustomPlot::rpHint);
         ///}
         picar_frec=0;
     }
     else if(picar_frec == 2){
         ///if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
-            customPlot_graph_Oxy2->replot();//QCustomPlot::rpHint);
+        customPlot_graph_Oxy2->replot();//QCustomPlot::rpHint);
         ///}
     }
     else if(picar_frec == 1){
         ///if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_Oxy2_max->isHidden()){
-            customPlot_graph_EKG->replot();//QCustomPlot::rpHint);
-       /// }
+        customPlot_graph_EKG->replot();//QCustomPlot::rpHint);
+        /// }
     }
     picar_frec++;
     //----------------------------------------------------------------------------------------------------------------------------------------
@@ -877,6 +877,7 @@ void MainWindow::afterUpdateGraph()
 
 void MainWindow::on_time_out_Ver_registro()
 {
+
     if(ver_registro_activated){
 
         if((x_axis_count_recorded % ancho_de_ventana_OXY)==0){
@@ -925,22 +926,23 @@ void MainWindow::on_time_out_Ver_registro()
 
         if(picar_frec >= 3){
             ///if(customPlot_graph_Oxy2_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
-                customPlot_graph_Oxy1->replot();//QCustomPlot::rpHint);
+            customPlot_graph_Oxy1->replot();//QCustomPlot::rpHint);
             ///}
             picar_frec=0;
         }
         else if(picar_frec == 2){
             ///if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
-                customPlot_graph_Oxy2->replot();//QCustomPlot::rpHint);
+            customPlot_graph_Oxy2->replot();//QCustomPlot::rpHint);
             ///}
         }
         else if(picar_frec == 1){
             ////if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_Oxy2_max->isHidden()){
-                customPlot_graph_EKG->replot();//QCustomPlot::rpHint);
+            customPlot_graph_EKG->replot();//QCustomPlot::rpHint);
             ///}
         }
         picar_frec++;
     }
+
 }
 
 void MainWindow::timeOut_Delay_Not_Found_Device()
@@ -1200,6 +1202,7 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
 {
     ////ui->statusBar->showMessage(QString("Chequeo ok"));
     //QObject::disconnect(socket,SIGNAL(readyRead()),this,SLOT(readSerial_initilization()));
+    clear_graphs(true, true);
 
     ui->pb_pant_test_pause_play->show();
 
@@ -1606,7 +1609,6 @@ void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
         }
     }
     else if(ui->pb_pant_test_Ver_Registro_Guardar->text() == "VER REGISTRO"){
-
 
         ui->pb_pant_test_pause_play->show();
 
@@ -2481,26 +2483,31 @@ void MainWindow::clear_graphs(bool clear_data, bool replot)
 void MainWindow::process_received_buffer(quint8 *receive_bytes){
 
 
-//    if(((receive_bytes[STATUS_CHECK_ADC]) == 3)){
-//        //amarillo desconectado
-//        ui->l_pant_test_electrodo_amarillo->show();
-//        porciento_de_adquirido = 0;
-//    }
-//    else if((receive_bytes[STATUS_CHECK_ADC]) == 2){
-//        //rojo desconectado
-//        ui->l_pant_test_electrodo_rojo->show();
-//        porciento_de_adquirido = 0;
-//    }
-//    else if((receive_bytes[STATUS_CHECK_ADC]) == 1){
-//        //verde desconectado
-//        ui->l_pant_test_electrodo_verde->show();
-//        porciento_de_adquirido = 0;
-//    }
-//    else{
-//        ui->l_pant_test_electrodo_amarillo->hide();
-//        ui->l_pant_test_electrodo_rojo->hide();
-//        ui->l_pant_test_electrodo_verde->hide();
-//    }
+    if(((receive_bytes[STATUS_CHECK_ADC]) == 3)){
+        //amarillo desconectado
+        ui->l_pant_test_electrodo_amarillo->show();
+        porciento_de_adquirido = 0;
+    }
+    else if((receive_bytes[STATUS_CHECK_ADC]) == 2){
+        //rojo desconectado
+        ui->l_pant_test_electrodo_rojo->show();
+        porciento_de_adquirido = 0;
+    }
+    else if((receive_bytes[STATUS_CHECK_ADC]) == 1){
+        //verde desconectado
+        ui->l_pant_test_electrodo_verde->show();
+        porciento_de_adquirido = 0;
+    }
+    else{
+        if(!ui->l_pant_test_electrodo_amarillo->isHidden()){
+            ui->l_pant_test_electrodo_amarillo->hide();
+        }
+        if(!ui->l_pant_test_electrodo_rojo->isHidden()){
+            ui->l_pant_test_electrodo_rojo->hide();
+        }
+        if(!ui->l_pant_test_electrodo_verde->isHidden()){
+            ui->l_pant_test_electrodo_verde->hide();}
+    }
 
     //Desfase de 4 muestras (4 * 16ms) en total un desfase de 64ms (la atraso para sincronizarla con el EKG desfasado por el filtro)-------
     //-------------------------------------------------------------------------------------------------------------------------------------
@@ -2536,154 +2543,156 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
 
     //Incremento el porciento al avanzar la prueba (circulo) - se reinicia si se ddesconecta electrodo-------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------
-//    if(porciento_de_adquirido < 100){
-//        ////ui->statusBar->showMessage(QString::number(SUMA_DE_PORCIENTO_RECIBIDO));
-//        porciento_de_adquirido += SUMA_DE_PORCIENTO_RECIBIDO;
-//        ui->l_pant_test_porciento_value->setText(QString::number((unsigned int)porciento_de_adquirido)+"%");
+    if(porciento_de_adquirido < 100){
+        ////ui->statusBar->showMessage(QString::number(SUMA_DE_PORCIENTO_RECIBIDO));
+        porciento_de_adquirido += SUMA_DE_PORCIENTO_RECIBIDO;
+        ui->l_pant_test_porciento_value->setText(QString::number((unsigned int)porciento_de_adquirido)+"%");
 
 
-//        ui->l_pant_test_porciento_circle_progress->setPixmap(QPixmap(QString(":/icons/")+QString::number(5*(unsigned int)(((unsigned int)porciento_de_adquirido)/5))+QString(".png")));
-//        ui->l_pant_test_porciento_circle_progress->setFixedSize(QSize(990,230));
-//    }
+        if((((unsigned int)porciento_de_adquirido) % 5) == 0){
+            ui->l_pant_test_porciento_circle_progress->setPixmap(QPixmap(QString(":/icons/")+QString::number((unsigned int)porciento_de_adquirido)+QString(".png")));
+            ui->l_pant_test_porciento_circle_progress->setFixedSize(QSize(990,230));
+        }
+    }
 //    else{
 //        ui->pb_pant_test_Ver_Registro_Guardar->setEnabled(true);
 //    }
     //-------------------------------------------------------------------------------------------------------------------------------------
 
-//    quint16 beats_per_minute_OXY1;
-//    quint16 beats_per_minute_OXY2;
-//    quint16 PI_value_OXY1;
-//    quint16 PI_value_OXY2;
+    quint16 beats_per_minute_OXY1;
+    quint16 beats_per_minute_OXY2;
+    quint16 PI_value_OXY1;
+    quint16 PI_value_OXY2;
 
-//    if(receive_bytes[SPO2_BUFFER_OXY1_POS] <= 100 && receive_bytes[SPO2_BUFFER_OXY1_POS] > 0){
-//        SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = receive_bytes[SPO2_BUFFER_OXY1_POS];
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(receive_bytes[SPO2_BUFFER_OXY1_POS] <= 100){
+        SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = receive_bytes[SPO2_BUFFER_OXY1_POS];
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    if(receive_bytes[SPO2_BUFFER_OXY2_POS] <= 100 && receive_bytes[SPO2_BUFFER_OXY2_POS] > 0){
-//        SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = receive_bytes[SPO2_BUFFER_OXY2_POS];
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(receive_bytes[SPO2_BUFFER_OXY2_POS] <= 100){
+        SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = receive_bytes[SPO2_BUFFER_OXY2_POS];
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =SPO2_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    beats_per_minute_OXY1 = receive_bytes[BPM_BUFFER_OXY1_POS+1];  //HIGH
-//    beats_per_minute_OXY1 = beats_per_minute_OXY1<<8;              //LOW
-//    beats_per_minute_OXY1 = beats_per_minute_OXY1|(receive_bytes[BPM_BUFFER_OXY1_POS] & 0x0FF);
+    beats_per_minute_OXY1 = receive_bytes[BPM_BUFFER_OXY1_POS+1];  //HIGH
+    beats_per_minute_OXY1 = beats_per_minute_OXY1<<8;              //LOW
+    beats_per_minute_OXY1 = beats_per_minute_OXY1|(receive_bytes[BPM_BUFFER_OXY1_POS] & 0x0FF);
 
-//    if(beats_per_minute_OXY1 <= 300 && beats_per_minute_OXY1 > 0){
-//        BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = beats_per_minute_OXY1;
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(beats_per_minute_OXY1 <= 300){
+        BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = beats_per_minute_OXY1;
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            BPM_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    beats_per_minute_OXY2 = receive_bytes[BPM_BUFFER_OXY2_POS+1];
-//    beats_per_minute_OXY2 = beats_per_minute_OXY2<<8;              //LOW
-//    beats_per_minute_OXY2 = beats_per_minute_OXY2|(receive_bytes[BPM_BUFFER_OXY2_POS] & 0x0FF);
+    beats_per_minute_OXY2 = receive_bytes[BPM_BUFFER_OXY2_POS+1];
+    beats_per_minute_OXY2 = beats_per_minute_OXY2<<8;              //LOW
+    beats_per_minute_OXY2 = beats_per_minute_OXY2|(receive_bytes[BPM_BUFFER_OXY2_POS] & 0x0FF);
 
-//    if(beats_per_minute_OXY2 <= 300 && beats_per_minute_OXY2 > 0){
-//        BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = beats_per_minute_OXY2;
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(beats_per_minute_OXY2 <= 300){
+        BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = beats_per_minute_OXY2;
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            BPM_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =BPM_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    PI_value_OXY1 = receive_bytes[PI_BUFFER_OXY1_POS+1];
-//    PI_value_OXY1 = PI_value_OXY1<<8;              //LOW
-//    PI_value_OXY1 = PI_value_OXY1|(receive_bytes[PI_BUFFER_OXY1_POS] & 0x0FF);
+    PI_value_OXY1 = receive_bytes[PI_BUFFER_OXY1_POS+1];
+    PI_value_OXY1 = PI_value_OXY1<<8;              //LOW
+    PI_value_OXY1 = PI_value_OXY1|(receive_bytes[PI_BUFFER_OXY1_POS] & 0x0FF);
 
-//    //PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
+    //PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
 
-//    if(PI_value_OXY1 <= 30000 && PI_value_OXY1 >= 0){
-//        PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(PI_value_OXY1 <= 30000){
+        PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy1_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    PI_value_OXY2 = receive_bytes[PI_BUFFER_OXY2_POS+1];
-//    PI_value_OXY2 = PI_value_OXY2<<8;              //LOW
-//    PI_value_OXY2 = PI_value_OXY2|(receive_bytes[PI_BUFFER_OXY2_POS] & 0x0FF);
+    PI_value_OXY2 = receive_bytes[PI_BUFFER_OXY2_POS+1];
+    PI_value_OXY2 = PI_value_OXY2<<8;              //LOW
+    PI_value_OXY2 = PI_value_OXY2|(receive_bytes[PI_BUFFER_OXY2_POS] & 0x0FF);
 
-//    //PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
+    //PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
 
-//    if(PI_value_OXY2 <= 30000 && PI_value_OXY2 >= 0){
-//        PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
-//    }
-//    else{
-//        if(function_value_count_SPO2_BPM_PI != 0){
-//            PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
-//        }
-//        else{
-//            PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
-//        }
-//    }
+    if(PI_value_OXY2 <= 30000){
+        PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
+    }
+    else{
+        if(function_value_count_SPO2_BPM_PI != 0){
+            PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI-1];
+        }
+        else{
+            PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] =PI_Oxy2_function_values[SPO2_FUNCTION_BUFFER_SIZE-1];
+        }
+    }
 
-//    ui->l_HR_ECG->setText("-");
-//    if(beats_per_minute_OXY1 <= 300){
-//        ui->l_HR_Oxy1->setText(QString::number(beats_per_minute_OXY1));
-//    }
-//    else{
-//        ui->l_HR_Oxy1->setText("-");
-//    }
-//    if(beats_per_minute_OXY2 <= 300){
-//        ui->l_HR_Oxy2->setText(QString::number(beats_per_minute_OXY2));
-//    }
-//    else{
-//        ui->l_HR_Oxy2->setText("-");
-//    }
+    ui->l_HR_ECG->setText("-");
+    if(beats_per_minute_OXY1 <= 300){
+        ui->l_HR_Oxy1->setText(QString::number(beats_per_minute_OXY1));
+    }
+    else{
+        ui->l_HR_Oxy1->setText("-");
+    }
+    if(beats_per_minute_OXY2 <= 300){
+        ui->l_HR_Oxy2->setText(QString::number(beats_per_minute_OXY2));
+    }
+    else{
+        ui->l_HR_Oxy2->setText("-");
+    }
 
-//    if(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] <= 100){
-//        ui->l_SpO2_Oxy1->setText(QString::number(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI])+"%");
-//    }
-//    else{
-//        ui->l_SpO2_Oxy1->setText("-");
-//    }
+    if(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] <= 100){
+        ui->l_SpO2_Oxy1->setText(QString::number(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI])+"%");
+    }
+    else{
+        ui->l_SpO2_Oxy1->setText("-");
+    }
 
-//    if(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] <= 100){
-//        ui->l_SpO2_Oxy2->setText(QString::number(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI])+"%");
-//    }
-//    else{
-//        ui->l_SpO2_Oxy2->setText("-");
-//    }
+    if(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] <= 100){
+        ui->l_SpO2_Oxy2->setText(QString::number(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI])+"%");
+    }
+    else{
+        ui->l_SpO2_Oxy2->setText("-");
+    }
 
-//    ui->l_PI_Oxy1->setText(QString::number((float)PI_value_OXY1/1000)+"%");
-//    ui->l_PI_Oxy2->setText(QString::number((float)PI_value_OXY2/1000)+"%");
+    ui->l_PI_Oxy1->setText(QString::number((float)PI_value_OXY1/1000)+"%");
+    ui->l_PI_Oxy2->setText(QString::number((float)PI_value_OXY2/1000)+"%");
 
 
-//    function_value_count_SPO2_BPM_PI++;
+    function_value_count_SPO2_BPM_PI++;
 
-//    if(function_value_count_SPO2_BPM_PI >= SPO2_FUNCTION_BUFFER_SIZE){
-//        function_value_count_SPO2_BPM_PI=0;
-//    }
+    if(function_value_count_SPO2_BPM_PI >= SPO2_FUNCTION_BUFFER_SIZE){
+        function_value_count_SPO2_BPM_PI=0;
+    }
 }
 
 

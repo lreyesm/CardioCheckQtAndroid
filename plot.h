@@ -104,13 +104,15 @@ public:
     void set_graph_number(int i=0){ graph_number = i;}
     int graph_Number(int i=0){ return graph_number;}
 
+    void erase_point(int index);
+
     QList<PlotPoint *> points;
     quint32 graph_count=0;
     QList<double> graph_points;
 
 public slots:
 
-    void testing();
+    void on_button_erase_point();
     void minimizar_graph();
     void maximizar_graph();
     void maximizar_graph_with_other_button();
@@ -171,7 +173,7 @@ private:
 
     quint8 mRadio_points = 10;
 
-    QLabel_Button *button_maximized_help;
+    QLabel_Button *button_maximized_erase_point;
     QLabel_Button *button_maximized;
     QLabel_Button *button_minimized;
     QLabel_Button *button_fix_Axis;

@@ -17,20 +17,81 @@ Plot::~Plot()
     this->deleteLater();
 }
 
-void Plot::testing(){
+void Plot::on_button_erase_point(){
 
-    this->setFixedSize(1000, 300);
+    erase_point(last_moving_point_pos_in_list);
+}
+
+void Plot::erase_point(int index){
+
+    if(index +1  < points.length()){ //esconde brackets de punto siguiente
+
+        set_Brackets_Visibles(false, index +1);
+    }
+
+    if(points.last() != points.at(index) && points.length()>1){ //Al eliminar un punto modificar la llave del siguiente con el anterior punto
+
+        if(points.first() != points.at(index)){
+
+            points.at(index+1)->move_Bracket_right(points.at(index-1)->pos());
+
+            if(isEKG_Graph()){
+                other_graph1->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
+                                                                             points.at(index-1)->pos().y()/40.96));
+                other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
+                                                                             points.at(index-1)->pos().y()/40.96));
+            }
+            else{
+                other_graph1->points.at(index+1)->move_Bracket_right(other_graph1->points.at(index-1)->pos());
+                if(other_graph2->isEKG_Graph()){
+                    other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()*4,
+                                                                                 points.at(index-1)->pos().y()*40.96));
+                }
+                else{
+                    other_graph2->points.at(index+1)->move_Bracket_right(other_graph2->points.at(index-1)->pos());
+                }
+            }
+        }
+    }
+    last_moving_point_pos_in_list=-1;
+
+    points.at(index)->set_Point_visible(false);
+    other_graph1->points.at(index)->set_Point_visible(false);
+    other_graph2->points.at(index)->set_Point_visible(false);
+
+
+    points.removeAt(index);
+    this->removeItem(index);
+
+    other_graph1->points.removeAt(index);
+    other_graph1->removeItem(index);
+    other_graph2->points.removeAt(index);
+    other_graph2->removeItem(index);
+
+    for(quint32 i =index; i< points.length(); i++){
+
+        points[i]->set_Item_index_in_list(i);
+        other_graph1->points[i]->set_Item_index_in_list(i);
+        other_graph2->points[i]->set_Item_index_in_list(i);
+    }
+
+    if(points.length()==1){  //Si hay un solo punto esconder brackets
+        set_Brackets_Visibles(false,0);
+    }
+    replot();///*QCustomPlot::rpHint*/);
+    other_graph1->replot();///*QCustomPlot::rpHint*/);
+    other_graph2->replot();///*QCustomPlot::rpHint*/);
 }
 
 void Plot::setup_Graph(){
 
-    button_maximized_help = new QLabel_Button((QOpenGLWidget*)this);
-    button_maximized_help->setFixedSize(100,100);
-    button_maximized_help->move(500,5);
-    button_maximized_help->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
-    button_maximized_help->setPixmap(QPixmap(":/icons/maximize_graph.png"));
-    button_maximized_help->setAlignment(Qt::AlignTop| Qt::AlignRight);
-    button_maximized_help->show();
+    button_maximized_erase_point = new QLabel_Button((QOpenGLWidget*)this);
+    button_maximized_erase_point->setFixedSize(100,100);
+    button_maximized_erase_point->move(5,190);
+    button_maximized_erase_point->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
+    button_maximized_erase_point->setPixmap(QPixmap(":/icons/recycler_bin.png"));
+    button_maximized_erase_point->setAlignment(Qt::AlignBottom| Qt::AlignLeft);
+    button_maximized_erase_point->hide();
 
     button_maximized = new QLabel_Button((QOpenGLWidget*)this);
     button_maximized->setFixedSize(100,100);
@@ -60,7 +121,7 @@ void Plot::setup_Graph(){
     button_fix_Axis->hide();
     //button_maximized->show();
 
-    //QObject::connect(button_maximized_help,SIGNAL(leftClicked()),this,SLOT(testing()));
+    QObject::connect(button_maximized_erase_point,SIGNAL(leftClicked()),this,SLOT(on_button_erase_point()));
     QObject::connect(button_maximized,SIGNAL(leftClicked()),this,SLOT(maximizar_graph()));
     QObject::connect(button_minimized,SIGNAL(leftClicked()),this,SLOT(minimize()));
     QObject::connect(button_fix_Axis,SIGNAL(leftClicked()),this,SLOT(fix_Axis()));
@@ -106,7 +167,7 @@ void Plot::setup_Graph(){
     points.append(point);
     this->addItem(point);
 
-    points.first()->setVisible(true);
+    points.first()->setVisible(false);
 }
 
 void Plot::enable_maximize_button(bool on){ //muestra boton para maximizar
@@ -116,12 +177,14 @@ void Plot::enable_maximize_button(bool on){ //muestra boton para maximizar
         button_maximized->show();
         button_fix_Axis->hide();
         button_minimized->hide();
+        button_maximized_erase_point->hide();
     }
     else{
 
         button_maximized->hide();
         button_fix_Axis->show();
         button_minimized->show();
+        button_maximized_erase_point->show();
     }
 }
 
@@ -220,16 +283,8 @@ void Plot::show_button_maximize(bool on){ //muestra el boton plus de maximizar
     if(on){
         button_maximized_with_other->show();
         button_maximized_with_other->raise();
-
-//        //button_maximized->show();
-//        button_minimized->hide();
-//        button_fix_Axis->hide();
     }
     else{
-
-//        //button_maximized->hide();
-//        button_minimized->show();
-//        button_fix_Axis->show();
 
         button_maximized_with_other->hide();
     }
@@ -246,6 +301,9 @@ void Plot::set_button_maximize_pos(bool up)
 }
 
 void Plot::fix_Axis(){
+
+    is_Draging = false;
+    drag_Timer.stop();
 
     is_Zooming = false;
     is_Zoom = false;
@@ -270,14 +328,21 @@ void Plot::minimizar_graph(){
 
     show_button_maximize(false);
 
+    for(int i=0; i< this->itemCount();i++){
+        points[i]->setVisible(false);
+    }
+
     setFixedSize(m_size);
     move(m_pos);
     show();
 
-    replot();
+    fix_Axis();
 }
 
 void Plot::maximizar_graph(){
+
+    is_Draging = false;
+    drag_Timer.stop();
 
     if(other_graph1->is_graph_Maximized() && other_graph2->is_graph_Maximized()){
         return;
@@ -335,7 +400,6 @@ void Plot::maximizar_graph(){
     this->replot(/*QCustomPlot::rpHint*/);
 
 }
-
 
 void Plot::maximizar_graph_with_other_button(){
 
@@ -610,70 +674,24 @@ void Plot::tap_hold_Triggered(QTapAndHoldGesture *gesture)
         other_graph2->replot();///*QCustomPlot::rpHint*/);
     }
     ///remover si dobleclick sobre punto
-//    else if (points.contains(plotPoint)){  //eliminar punto
+    else if (points.contains(plotPoint)){  //eliminar punto
 
-//        plotPoint->stopMoving();
+        plotPoint->stopMoving();
 
-//        int index = points.indexOf(plotPoint);
+        is_moving_point = false;
 
-//        if(index +1  < points.length()){ //esconde brackets de punto siguiente
+        is_Draging = false;
+        drag_Timer.stop();
 
-//            set_Brackets_Visibles(false, index +1);
-//        }
+        int index = points.indexOf(plotPoint);
 
-//        if(points.last() != points.at(index) && points.length()>1){ //Al eliminar un punto modificar la llave del siguiente con el anterior punto
+        last_moving_point_pos_in_list = index;
+        last_point_after_moving = plotPoint->pos();
 
-//            if(points.first() != points.at(index)){
-
-//                points.at(index+1)->move_Bracket_right(points.at(index-1)->pos());
-
-//                if(isEKG_Graph()){
-//                    other_graph1->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
-//                                                                                 points.at(index-1)->pos().y()/40.96));
-//                    other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
-//                                                                                 points.at(index-1)->pos().y()/40.96));
-//                }
-//                else{
-//                    other_graph1->points.at(index+1)->move_Bracket_right(other_graph1->points.at(index-1)->pos());
-//                    if(other_graph2->isEKG_Graph()){
-//                        other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()*4,
-//                                                                                     points.at(index-1)->pos().y()*40.96));
-//                    }
-//                    else{
-//                        other_graph2->points.at(index+1)->move_Bracket_right(other_graph2->points.at(index-1)->pos());
-//                    }
-//                }
-//            }
-//        }
-//        last_moving_point_pos_in_list=-1;
-
-//        points.at(index)->set_Point_visible(false);
-//        other_graph1->points.at(index)->set_Point_visible(false);
-//        other_graph2->points.at(index)->set_Point_visible(false);
-
-
-//        points.removeAt(index);
-//        this->removeItem(index);
-
-//        other_graph1->points.removeAt(index);
-//        other_graph1->removeItem(index);
-//        other_graph2->points.removeAt(index);
-//        other_graph2->removeItem(index);
-
-//        for(quint32 i =index; i< points.length(); i++){
-
-//            points[i]->set_Item_index_in_list(i);
-//            other_graph1->points[i]->set_Item_index_in_list(i);
-//            other_graph2->points[i]->set_Item_index_in_list(i);
-//        }
-
-//        if(points.length()==1){  //Si hay un solo punto esconder brackets
-//            set_Brackets_Visibles(false,0);
-//        }
-//        replot();///*QCustomPlot::rpHint*/);
-//        other_graph1->replot();///*QCustomPlot::rpHint*/);
-//        other_graph2->replot();///*QCustomPlot::rpHint*/);
-//    }
+        replot();///*QCustomPlot::rpHint*/);
+        other_graph1->replot();///*QCustomPlot::rpHint*/);
+        other_graph2->replot();///*QCustomPlot::rpHint*/);
+    }
 
 }
 
@@ -863,6 +881,9 @@ void Plot::maximize(QPoint maximized_pos){
 
 void Plot::minimize(){
 
+    is_Draging = false;
+    drag_Timer.stop();
+
     isMaximized = false;
 
     set_Interactions_in_graph(false);
@@ -904,4 +925,6 @@ void Plot::minimize(){
     }
     this->lower();
     this->stackUnder(background_blur);
+
+    replot();
 }

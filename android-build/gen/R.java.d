@@ -1,0 +1,27 @@
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\gen\org\qtproject\example\CardioCheck\R.java \
+ : D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\drawable-hdpi\icon.png \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\drawable-ldpi\icon.png \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\drawable-mdpi\icon.png \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\layout\splash.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values\libs.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-de\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-el\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-es\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-et\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-fa\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-fr\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-id\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-it\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-ja\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-ms\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-nb\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-nl\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-pl\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-pt-rBR\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-ro\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-rs\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-ru\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-zh-rCN\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\res\values-zh-rTW\strings.xml \
+D:\PROJECTS_MINE\QT_Trabajo\CardioCheck\android-build\bin\AndroidManifest.xml \
