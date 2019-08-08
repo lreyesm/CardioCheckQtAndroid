@@ -95,6 +95,18 @@ void Plot::setup_Graph(){
     //this->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
 
     this->setInteractions(QCP::iRangeZoom);
+
+    PlotPoint *point = new PlotPoint(this,2,"");
+    point->setColor(QColor(255,255,255));
+
+    point->set_Item_index_in_list(0);
+
+    point->setSelectable(false);
+
+    points.append(point);
+    this->addItem(point);
+
+    points.first()->setVisible(true);
 }
 
 void Plot::enable_maximize_button(bool on){ //muestra boton para maximizar
@@ -126,22 +138,8 @@ void Plot::set_Interactions_in_graph(bool on){
         //this->grabGesture(Qt::PanGesture);
         //------------------------------------------------------------------------------------------------------------------------
 
-        PlotPoint *point = new PlotPoint(this,2,"");
-        point->setColor(QColor(255,255,255));
-
-        point->set_Item_index_in_list(0);
-
-        point->setSelectable(false);
-
-        points.append(point);
-        this->addItem(point);
-
-        points.first()->setVisible(true);
-        //this->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-
         QObject::connect(&drag_Timer,SIGNAL(timeout()),this,SLOT(on_Drag_timer_timeout()));
         QObject::connect(&zoom_Timer,SIGNAL(timeout()),this,SLOT(on_Zoom_timer_timeout()));
-
     }
     else{
 
@@ -153,6 +151,9 @@ void Plot::set_Interactions_in_graph(bool on){
         this->ungrabGesture(Qt::PinchGesture);
         //this->ungrabGesture(Qt::PanGesture);
         //------------------------------------------------------------------------------------------------------------------------
+
+        QObject::disconnect(&drag_Timer,SIGNAL(timeout()),this,SLOT(on_Drag_timer_timeout()));
+        QObject::disconnect(&zoom_Timer,SIGNAL(timeout()),this,SLOT(on_Zoom_timer_timeout()));
 
         this->setInteractions(0);
     }
@@ -240,7 +241,7 @@ void Plot::set_button_maximize_pos(bool up)
         button_maximized_with_other->move(button_maximized_with_other->pos().x(), 200);
     }
     else{
-        button_maximized_with_other->move(button_maximized_with_other->pos().x(), 500);
+        button_maximized_with_other->move(button_maximized_with_other->pos().x(), 450);
     }
 }
 
@@ -501,8 +502,8 @@ void Plot::tap_hold_Triggered(QTapAndHoldGesture *gesture)
 {
     is_moving_point = false;
 
-    //QPointF actual_tap_pos = QPointF(this->mapFromGlobal(QPoint((int)gesture->hotSpot().x(),(int)gesture->hotSpot().y())));
-    QPointF actual_tap_pos = gesture->position() - QPointF(this->pos()); //misma funcion que mapFromGlobal
+    QPointF actual_tap_pos = QPointF(this->mapFromGlobal(QPoint((int)gesture->hotSpot().x(),(int)gesture->hotSpot().y())));
+    //QPointF actual_tap_pos = gesture->position() - QPointF(this->pos()); //misma funcion que mapFromGlobal
 
     if(last_tap_hold_pos != actual_tap_pos){
         last_tap_hold_pos = actual_tap_pos;
@@ -545,6 +546,8 @@ void Plot::tap_hold_Triggered(QTapAndHoldGesture *gesture)
 
         set_Point_Selected(true, points.length()-1);
 
+
+        //point->set_Point_Text("x: "+QString::number(last_tap_hold_pos.x())+"   y: "+QString::number(last_tap_hold_pos.y()));
         double coord_x_this = this->xAxis->pixelToCoord(last_tap_hold_pos.x());
         double coord_x_other_graph1;
         double coord_x_other_graph2;
@@ -607,70 +610,70 @@ void Plot::tap_hold_Triggered(QTapAndHoldGesture *gesture)
         other_graph2->replot();///*QCustomPlot::rpHint*/);
     }
     ///remover si dobleclick sobre punto
-    else if (points.contains(plotPoint)){  //eliminar punto
+//    else if (points.contains(plotPoint)){  //eliminar punto
 
-        plotPoint->stopMoving();
+//        plotPoint->stopMoving();
 
-        int index = points.indexOf(plotPoint);
+//        int index = points.indexOf(plotPoint);
 
-        if(index +1  < points.length()){ //esconde brackets de punto siguiente
+//        if(index +1  < points.length()){ //esconde brackets de punto siguiente
 
-            set_Brackets_Visibles(false, index +1);
-        }
+//            set_Brackets_Visibles(false, index +1);
+//        }
 
-        if(points.last() != points.at(index) && points.length()>1){ //Al eliminar un punto modificar la llave del siguiente con el anterior punto
+//        if(points.last() != points.at(index) && points.length()>1){ //Al eliminar un punto modificar la llave del siguiente con el anterior punto
 
-            if(points.first() != points.at(index)){
+//            if(points.first() != points.at(index)){
 
-                points.at(index+1)->move_Bracket_right(points.at(index-1)->pos());
+//                points.at(index+1)->move_Bracket_right(points.at(index-1)->pos());
 
-                if(isEKG_Graph()){
-                    other_graph1->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
-                                                                                 points.at(index-1)->pos().y()/40.96));
-                    other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
-                                                                                 points.at(index-1)->pos().y()/40.96));
-                }
-                else{
-                    other_graph1->points.at(index+1)->move_Bracket_right(other_graph1->points.at(index-1)->pos());
-                    if(other_graph2->isEKG_Graph()){
-                        other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()*4,
-                                                                                     points.at(index-1)->pos().y()*40.96));
-                    }
-                    else{
-                        other_graph2->points.at(index+1)->move_Bracket_right(other_graph2->points.at(index-1)->pos());
-                    }
-                }
-            }
-        }
-        last_moving_point_pos_in_list=-1;
+//                if(isEKG_Graph()){
+//                    other_graph1->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
+//                                                                                 points.at(index-1)->pos().y()/40.96));
+//                    other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()/4,
+//                                                                                 points.at(index-1)->pos().y()/40.96));
+//                }
+//                else{
+//                    other_graph1->points.at(index+1)->move_Bracket_right(other_graph1->points.at(index-1)->pos());
+//                    if(other_graph2->isEKG_Graph()){
+//                        other_graph2->points.at(index+1)->move_Bracket_right(QPointF(points.at(index-1)->pos().x()*4,
+//                                                                                     points.at(index-1)->pos().y()*40.96));
+//                    }
+//                    else{
+//                        other_graph2->points.at(index+1)->move_Bracket_right(other_graph2->points.at(index-1)->pos());
+//                    }
+//                }
+//            }
+//        }
+//        last_moving_point_pos_in_list=-1;
 
-        points.at(index)->set_Point_visible(false);
-        other_graph1->points.at(index)->set_Point_visible(false);
-        other_graph2->points.at(index)->set_Point_visible(false);
+//        points.at(index)->set_Point_visible(false);
+//        other_graph1->points.at(index)->set_Point_visible(false);
+//        other_graph2->points.at(index)->set_Point_visible(false);
 
 
-        points.removeAt(index);
-        this->removeItem(index);
+//        points.removeAt(index);
+//        this->removeItem(index);
 
-        other_graph1->points.removeAt(index);
-        other_graph1->removeItem(index);
-        other_graph2->points.removeAt(index);
-        other_graph2->removeItem(index);
+//        other_graph1->points.removeAt(index);
+//        other_graph1->removeItem(index);
+//        other_graph2->points.removeAt(index);
+//        other_graph2->removeItem(index);
 
-        for(quint32 i =index; i< points.length(); i++){
+//        for(quint32 i =index; i< points.length(); i++){
 
-            points[i]->set_Item_index_in_list(i);
-            other_graph1->points[i]->set_Item_index_in_list(i);
-            other_graph2->points[i]->set_Item_index_in_list(i);
-        }
+//            points[i]->set_Item_index_in_list(i);
+//            other_graph1->points[i]->set_Item_index_in_list(i);
+//            other_graph2->points[i]->set_Item_index_in_list(i);
+//        }
 
-        if(points.length()==1){  //Si hay un solo punto esconder brackets
-            set_Brackets_Visibles(false,0);
-        }
-        replot();///*QCustomPlot::rpHint*/);
-        other_graph1->replot();///*QCustomPlot::rpHint*/);
-        other_graph2->replot();///*QCustomPlot::rpHint*/);
-    }
+//        if(points.length()==1){  //Si hay un solo punto esconder brackets
+//            set_Brackets_Visibles(false,0);
+//        }
+//        replot();///*QCustomPlot::rpHint*/);
+//        other_graph1->replot();///*QCustomPlot::rpHint*/);
+//        other_graph2->replot();///*QCustomPlot::rpHint*/);
+//    }
 
 }
 

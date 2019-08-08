@@ -12,6 +12,8 @@
 #include <QDesktopWidget>
 #include "bebe_data_class.h"
 
+#define DELAY_LOOKING_BLUETOOTH 2000
+
 namespace Ui {
 class MainWindow;
 }

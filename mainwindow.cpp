@@ -965,7 +965,7 @@ void MainWindow::timeOut_Delay_PowerOn()
     agent->start();
 
     QObject::connect(&timer_delay,SIGNAL(timeout()),this,SLOT(timeOut_Delay_Not_Found_Device()));
-    timer_delay.setInterval(5000);
+    timer_delay.setInterval(DELAY_LOOKING_BLUETOOTH);
     timer_delay.start();
 }
 
