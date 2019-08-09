@@ -69,6 +69,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(mouse_Release()),this,SLOT(on_drag_screen_released()));
     connect(this,SIGNAL(mouse_DoubleClick()),this,SLOT(on_mouse_DoubleClick()));
 
+    connect(this,SIGNAL(),this,SLOT(on_mouse_DoubleClick()));
+    
     //Actualizar fecha y hora cada 20 segundos-------------------------------------------------------------------------------
     update_fecha_y_hora();
     timer_time.setInterval(1000);
@@ -149,6 +151,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    localDevice->deleteLater();
     socket->disconnectFromService();
     socket->close();
     socket->deleteLater();
@@ -305,6 +308,45 @@ void MainWindow::setupGraph_Oxy1(){   //OXYmetro 1
     customPlot_graph_Oxy1->set_Size(QSize(728, 124));
     customPlot_graph_Oxy1->set_position(QPoint(205,618));
 
+    customPlot_graph_Oxy1->replot();
+}
+
+void MainWindow::setupGraph_Oxy2()
+{
+
+    customPlot_graph_Oxy2->setup_Graph();
+
+    customPlot_graph_Oxy2->graph(0)->setName("Oxy2");
+    customPlot_graph_Oxy2->graph(0)->setPen(QPen(QColor(0, 200, 255)));  //azul
+
+    customPlot_graph_Oxy2->set_Range_x_axis_initial(0,500);
+    customPlot_graph_Oxy2->set_Range_y_axis_initial(0,100);
+
+    customPlot_graph_Oxy2->set_Size(QSize(728, 124));
+    customPlot_graph_Oxy2->set_position(QPoint(205,758));
+
+    customPlot_graph_Oxy2->replot();
+}
+
+void MainWindow::setupGraph_EKG()
+{
+    customPlot_graph_EKG->setup_Graph();
+
+    customPlot_graph_EKG->graph(0)->setName("Ekg filtered");
+    customPlot_graph_EKG->graph(0)->setPen(QPen(QColor(0, 255, 0)));  //azul
+
+    customPlot_graph_EKG->set_Range_x_axis_initial(0,2000);
+    customPlot_graph_EKG->set_Range_y_axis_initial(0,4096);
+
+    customPlot_graph_EKG->set_Size(QSize(728, 124));
+    customPlot_graph_EKG->set_position(QPoint(205,479));
+
+    customPlot_graph_EKG->replot();
+}
+
+void MainWindow::setup_Plot_Interactions()
+{
+
     customPlot_graph_Oxy1->set_maximize_Size(QSize(1090, 300));
     customPlot_graph_Oxy1->set_maximize_position(QPoint(100,100));
     customPlot_graph_Oxy1->set_Maximized_position_whit_other_maximize(QPoint(100,450));
@@ -322,23 +364,7 @@ void MainWindow::setupGraph_Oxy1(){   //OXYmetro 1
 
     customPlot_graph_Oxy1->set_Interactions_in_graph(false);
 
-    customPlot_graph_Oxy1->replot();
 
-}
-
-void MainWindow::setupGraph_Oxy2()
-{
-
-    customPlot_graph_Oxy2->setup_Graph();
-
-    customPlot_graph_Oxy2->graph(0)->setName("Oxy2");
-    customPlot_graph_Oxy2->graph(0)->setPen(QPen(QColor(0, 200, 255)));  //azul
-
-    customPlot_graph_Oxy2->set_Range_x_axis_initial(0,500);
-    customPlot_graph_Oxy2->set_Range_y_axis_initial(0,100);
-
-    customPlot_graph_Oxy2->set_Size(QSize(728, 124));
-    customPlot_graph_Oxy2->set_position(QPoint(205,758));
 
     customPlot_graph_Oxy2->set_maximize_Size(QSize(1090, 300));
     customPlot_graph_Oxy2->set_maximize_position(QPoint(100,100));
@@ -357,21 +383,7 @@ void MainWindow::setupGraph_Oxy2()
     customPlot_graph_Oxy2->set_other_graph1(customPlot_graph_Oxy1);
     customPlot_graph_Oxy2->set_other_graph2(customPlot_graph_EKG);
 
-    customPlot_graph_Oxy2->replot();
-}
 
-void MainWindow::setupGraph_EKG()
-{
-    customPlot_graph_EKG->setup_Graph();
-
-    customPlot_graph_EKG->graph(0)->setName("Ekg filtered");
-    customPlot_graph_EKG->graph(0)->setPen(QPen(QColor(0, 255, 0)));  //azul
-
-    customPlot_graph_EKG->set_Range_x_axis_initial(0,2000);
-    customPlot_graph_EKG->set_Range_y_axis_initial(0,4096);
-
-    customPlot_graph_EKG->set_Size(QSize(728, 124));
-    customPlot_graph_EKG->set_position(QPoint(205,479));
 
     customPlot_graph_EKG->set_maximize_Size(QSize(1090, 300));
     customPlot_graph_EKG->set_maximize_position(QPoint(100,100));
@@ -392,8 +404,9 @@ void MainWindow::setupGraph_EKG()
     customPlot_graph_EKG->set_other_graph1(customPlot_graph_Oxy1);
     customPlot_graph_EKG->set_other_graph2(customPlot_graph_Oxy2);
 
+    customPlot_graph_Oxy1->replot();
+    customPlot_graph_Oxy2->replot();
     customPlot_graph_EKG->replot();
-
 }
 
 void MainWindow::show_cartel_buscando_dispositivo_bluetooth()
@@ -1204,7 +1217,7 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
     //QObject::disconnect(socket,SIGNAL(readyRead()),this,SLOT(readSerial_initilization()));
     clear_graphs(true, true);
 
-    ui->pb_pant_test_pause_play->show();
+    //ui->pb_pant_test_pause_play->show();
 
     last_bad_receive_pos=0;
 
@@ -1642,6 +1655,12 @@ void MainWindow::on_pb_pant_test_pause_play(){
         ui->pb_pant_test_pause_play->setPixmap(QPixmap(":/icons/button_play.png"));
         timer_graph.stop();
         pausado = true;
+
+        this->setup_Plot_Interactions();
+
+        customPlot_graph_Oxy1->setup_Plot_variables();
+        customPlot_graph_Oxy2->setup_Plot_variables();
+        customPlot_graph_EKG->setup_Plot_variables();
 
         customPlot_graph_Oxy1->enable_maximize_button(true);
         customPlot_graph_Oxy2->enable_maximize_button(true);
@@ -2482,33 +2501,6 @@ void MainWindow::clear_graphs(bool clear_data, bool replot)
 
 void MainWindow::process_received_buffer(quint8 *receive_bytes){
 
-
-    if(((receive_bytes[STATUS_CHECK_ADC]) == 3)){
-        //amarillo desconectado
-        ui->l_pant_test_electrodo_amarillo->show();
-        porciento_de_adquirido = 0;
-    }
-    else if((receive_bytes[STATUS_CHECK_ADC]) == 2){
-        //rojo desconectado
-        ui->l_pant_test_electrodo_rojo->show();
-        porciento_de_adquirido = 0;
-    }
-    else if((receive_bytes[STATUS_CHECK_ADC]) == 1){
-        //verde desconectado
-        ui->l_pant_test_electrodo_verde->show();
-        porciento_de_adquirido = 0;
-    }
-    else{
-        if(!ui->l_pant_test_electrodo_amarillo->isHidden()){
-            ui->l_pant_test_electrodo_amarillo->hide();
-        }
-        if(!ui->l_pant_test_electrodo_rojo->isHidden()){
-            ui->l_pant_test_electrodo_rojo->hide();
-        }
-        if(!ui->l_pant_test_electrodo_verde->isHidden()){
-            ui->l_pant_test_electrodo_verde->hide();}
-    }
-
     //Desfase de 4 muestras (4 * 16ms) en total un desfase de 64ms (la atraso para sincronizarla con el EKG desfasado por el filtro)-------
     //-------------------------------------------------------------------------------------------------------------------------------------
     if(function_value_pos + FUNCTION_BUFFER_SIZE  >= DATA_FUNCTION_SIZE){
@@ -2546,17 +2538,10 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
     if(porciento_de_adquirido < 100){
         ////ui->statusBar->showMessage(QString::number(SUMA_DE_PORCIENTO_RECIBIDO));
         porciento_de_adquirido += SUMA_DE_PORCIENTO_RECIBIDO;
-        ui->l_pant_test_porciento_value->setText(QString::number((unsigned int)porciento_de_adquirido)+"%");
-
-
-        if((((unsigned int)porciento_de_adquirido) % 5) == 0){
-            ui->l_pant_test_porciento_circle_progress->setPixmap(QPixmap(QString(":/icons/")+QString::number((unsigned int)porciento_de_adquirido)+QString(".png")));
-            ui->l_pant_test_porciento_circle_progress->setFixedSize(QSize(990,230));
-        }
     }
-//    else{
-//        ui->pb_pant_test_Ver_Registro_Guardar->setEnabled(true);
-//    }
+    else{
+        ui->pb_pant_test_Ver_Registro_Guardar->setEnabled(true);
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------
 
     quint16 beats_per_minute_OXY1;
@@ -2624,7 +2609,6 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
     PI_value_OXY1 = PI_value_OXY1<<8;              //LOW
     PI_value_OXY1 = PI_value_OXY1|(receive_bytes[PI_BUFFER_OXY1_POS] & 0x0FF);
 
-    //PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
 
     if(PI_value_OXY1 <= 30000){
         PI_Oxy1_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY1;
@@ -2642,7 +2626,6 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
     PI_value_OXY2 = PI_value_OXY2<<8;              //LOW
     PI_value_OXY2 = PI_value_OXY2|(receive_bytes[PI_BUFFER_OXY2_POS] & 0x0FF);
 
-    //PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
 
     if(PI_value_OXY2 <= 30000){
         PI_Oxy2_function_values[function_value_count_SPO2_BPM_PI] = PI_value_OXY2;
@@ -2656,43 +2639,84 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
         }
     }
 
-    ui->l_HR_ECG->setText("-");
-    if(beats_per_minute_OXY1 <= 300){
-        ui->l_HR_Oxy1->setText(QString::number(beats_per_minute_OXY1));
-    }
-    else{
-        ui->l_HR_Oxy1->setText("-");
-    }
-    if(beats_per_minute_OXY2 <= 300){
-        ui->l_HR_Oxy2->setText(QString::number(beats_per_minute_OXY2));
-    }
-    else{
-        ui->l_HR_Oxy2->setText("-");
-    }
+    if(picar_frec_act_data == 8){
 
-    if(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] <= 100){
-        ui->l_SpO2_Oxy1->setText(QString::number(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI])+"%");
-    }
-    else{
-        ui->l_SpO2_Oxy1->setText("-");
-    }
+        picar_frec_act_data=0;
 
-    if(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] <= 100){
-        ui->l_SpO2_Oxy2->setText(QString::number(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI])+"%");
+        if(((receive_bytes[STATUS_CHECK_ADC]) == 3)){
+            //amarillo desconectado
+            if(ui->l_pant_test_electrodo_amarillo->isHidden())
+                ui->l_pant_test_electrodo_amarillo->show();
+            porciento_de_adquirido = 0;
+        }
+        else if((receive_bytes[STATUS_CHECK_ADC]) == 2){
+            //rojo desconectado
+            if(ui->l_pant_test_electrodo_rojo->isHidden())
+                ui->l_pant_test_electrodo_rojo->show();
+            porciento_de_adquirido = 0;
+        }
+        else if((receive_bytes[STATUS_CHECK_ADC]) == 1){
+            //verde desconectado
+            if(ui->l_pant_test_electrodo_verde->isHidden())
+                ui->l_pant_test_electrodo_verde->show();
+            porciento_de_adquirido = 0;
+        }
+        else{
+            if(!ui->l_pant_test_electrodo_amarillo->isHidden()){
+                ui->l_pant_test_electrodo_amarillo->hide();
+            }
+            if(!ui->l_pant_test_electrodo_rojo->isHidden()){
+                ui->l_pant_test_electrodo_rojo->hide();
+            }
+            if(!ui->l_pant_test_electrodo_verde->isHidden()){
+                ui->l_pant_test_electrodo_verde->hide();}
+        }
+
+        ui->l_pant_test_porciento_value->setText(QString::number((unsigned int)porciento_de_adquirido)+"%");
+
+        if((((unsigned int)porciento_de_adquirido) % 5) == 0){
+            ui->l_pant_test_porciento_circle_progress->setPixmap(QPixmap(QString(":/icons/")+QString::number((unsigned int)porciento_de_adquirido)+QString(".png")));
+            ui->l_pant_test_porciento_circle_progress->setFixedSize(QSize(990,230));
+        }
+
+        ui->l_HR_ECG->setText("-");
+        if(beats_per_minute_OXY1 <= 300){
+            ui->l_HR_Oxy1->setText(QString::number(beats_per_minute_OXY1));
+        }
+        else{
+            ui->l_HR_Oxy1->setText("-");
+        }
+        if(beats_per_minute_OXY2 <= 300){
+            ui->l_HR_Oxy2->setText(QString::number(beats_per_minute_OXY2));
+        }
+        else{
+            ui->l_HR_Oxy2->setText("-");
+        }
+
+        if(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI] <= 100){
+            ui->l_SpO2_Oxy1->setText(QString::number(SPO2_Oxy1_function_values[function_value_count_SPO2_BPM_PI])+"%");
+        }
+        else{
+            ui->l_SpO2_Oxy1->setText("-");
+        }
+
+        if(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI] <= 100){
+            ui->l_SpO2_Oxy2->setText(QString::number(SPO2_Oxy2_function_values[function_value_count_SPO2_BPM_PI])+"%");
+        }
+        else{
+            ui->l_SpO2_Oxy2->setText("-");
+        }
+
+        ui->l_PI_Oxy1->setText(QString::number((float)PI_value_OXY1/1000)+"%");
+        ui->l_PI_Oxy2->setText(QString::number((float)PI_value_OXY2/1000)+"%");
+
+        function_value_count_SPO2_BPM_PI++;
+
+        if(function_value_count_SPO2_BPM_PI >= SPO2_FUNCTION_BUFFER_SIZE){
+            function_value_count_SPO2_BPM_PI=0;
+        }
     }
-    else{
-        ui->l_SpO2_Oxy2->setText("-");
-    }
-
-    ui->l_PI_Oxy1->setText(QString::number((float)PI_value_OXY1/1000)+"%");
-    ui->l_PI_Oxy2->setText(QString::number((float)PI_value_OXY2/1000)+"%");
-
-
-    function_value_count_SPO2_BPM_PI++;
-
-    if(function_value_count_SPO2_BPM_PI >= SPO2_FUNCTION_BUFFER_SIZE){
-        function_value_count_SPO2_BPM_PI=0;
-    }
+    picar_frec_act_data++;
 }
 
 

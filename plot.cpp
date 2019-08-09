@@ -8,8 +8,6 @@ Plot::Plot(QWidget *parent, int radio_point)
     this->setParent(parent);
 
     mRadio_points = radio_point;
-
-    setSelectionTolerance(radio_point*2);
 }
 
 Plot::~Plot()
@@ -19,7 +17,8 @@ Plot::~Plot()
 
 void Plot::on_button_erase_point(){
 
-    erase_point(last_moving_point_pos_in_list);
+    if(last_moving_point_pos_in_list > 0)
+        erase_point(last_moving_point_pos_in_list);
 }
 
 void Plot::erase_point(int index){
@@ -85,89 +84,80 @@ void Plot::erase_point(int index){
 
 void Plot::setup_Graph(){
 
-    button_maximized_erase_point = new QLabel_Button((QOpenGLWidget*)this);
-    button_maximized_erase_point->setFixedSize(100,100);
-    button_maximized_erase_point->move(5,190);
-    button_maximized_erase_point->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
-    button_maximized_erase_point->setPixmap(QPixmap(":/icons/recycler_bin.png"));
-    button_maximized_erase_point->setAlignment(Qt::AlignBottom| Qt::AlignLeft);
-    button_maximized_erase_point->hide();
+    setSelectionTolerance(mRadio_points*2);
 
-    button_maximized = new QLabel_Button((QOpenGLWidget*)this);
-    button_maximized->setFixedSize(100,100);
-    button_maximized->move(625,5);
-    button_maximized->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
-    button_maximized->setPixmap(QPixmap(":/icons/maximize_graph.png"));
-    button_maximized->setAlignment(Qt::AlignTop| Qt::AlignRight);
-    button_maximized->hide();
-    //button_maximized->show();
-
-    button_minimized = new QLabel_Button((QOpenGLWidget*)this);
-    button_minimized->setFixedSize(100,100);
-    button_minimized->move(980,10);
-    //button_minimized->move(525,10);
-    button_minimized->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
-    button_minimized->setPixmap(QPixmap(":/icons/minimize_graph.png"));
-    button_minimized->setAlignment(Qt::AlignTop | Qt::AlignRight);
-    button_minimized->hide();
-
-    button_fix_Axis = new QLabel_Button((QOpenGLWidget*)this);
-    button_fix_Axis->setFixedSize(100,100);
-    button_fix_Axis->move(980,190);
-    //button_fix_Axis->move(625,40);
-    button_fix_Axis->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
-    button_fix_Axis->setPixmap(QPixmap(":/icons/fix_graph_zoom.png"));
-    button_fix_Axis->setAlignment(Qt::AlignBottom | Qt::AlignRight);
-    button_fix_Axis->hide();
-    //button_maximized->show();
-
-    QObject::connect(button_maximized_erase_point,SIGNAL(leftClicked()),this,SLOT(on_button_erase_point()));
-    QObject::connect(button_maximized,SIGNAL(leftClicked()),this,SLOT(maximizar_graph()));
-    QObject::connect(button_minimized,SIGNAL(leftClicked()),this,SLOT(minimize()));
-    QObject::connect(button_fix_Axis,SIGNAL(leftClicked()),this,SLOT(fix_Axis()));
-
-
-    QVector<double> time_x_axis(100),concentration_y_axis(100);
-
-    for(int i=0; i< 100; i++){
-        time_x_axis[i]=0;
-        concentration_y_axis[i]=0;
-
-    }
     this->addGraph();
-    this->graph(0)->setData(time_x_axis,concentration_y_axis);
 
     this->xAxis->setVisible(false);
     this->yAxis->setVisible(false);
 
-    this->xAxis->setTickLabelRotation(60);
-
-    this->xAxis->setTickLength(0, 4);
-
     this->setBackground(QBrush(QColor(Qt::black)));
     //this->setBackground(QBrush(QColor(Qt::white)));
 
-    this->setAutoFillBackground(true);
+    //this->setAutoFillBackground(true);
 
     this->setPlottingHints(QCP::phFastPolylines | QCP::phCacheLabels /*|QCP::phForceRepaint*/);
     this->setAntialiasedElements(QCP::aeNone);
+}
 
-    //Con esto se puede modificar el zoom vertical u horizontal
-    //this->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
+void Plot::setup_Plot_variables()
+{
 
-    this->setInteractions(QCP::iRangeZoom);
+    if(points.isEmpty()){
 
-    PlotPoint *point = new PlotPoint(this,2,"");
-    point->setColor(QColor(255,255,255));
+        button_maximized_erase_point = new QLabel_Button((QOpenGLWidget*)this);
+        button_maximized_erase_point->setFixedSize(100,100);
+        button_maximized_erase_point->move(5,190);
+        button_maximized_erase_point->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
+        button_maximized_erase_point->setPixmap(QPixmap(":/icons/recycler_bin.png"));
+        button_maximized_erase_point->setAlignment(Qt::AlignBottom| Qt::AlignLeft);
+        button_maximized_erase_point->hide();
 
-    point->set_Item_index_in_list(0);
+        button_maximized = new QLabel_Button((QOpenGLWidget*)this);
+        button_maximized->setFixedSize(100,100);
+        button_maximized->move(625,5);
+        button_maximized->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
+        button_maximized->setPixmap(QPixmap(":/icons/maximize_graph.png"));
+        button_maximized->setAlignment(Qt::AlignTop| Qt::AlignRight);
+        button_maximized->hide();
+        //button_maximized->show();
 
-    point->setSelectable(false);
+        button_minimized = new QLabel_Button((QOpenGLWidget*)this);
+        button_minimized->setFixedSize(100,100);
+        button_minimized->move(980,10);
+        //button_minimized->move(525,10);
+        button_minimized->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
+        button_minimized->setPixmap(QPixmap(":/icons/minimize_graph.png"));
+        button_minimized->setAlignment(Qt::AlignTop | Qt::AlignRight);
+        button_minimized->hide();
 
-    points.append(point);
-    this->addItem(point);
+        button_fix_Axis = new QLabel_Button((QOpenGLWidget*)this);
+        button_fix_Axis->setFixedSize(100,100);
+        button_fix_Axis->move(980,190);
+        //button_fix_Axis->move(625,40);
+        button_fix_Axis->setStyleSheet(QStringLiteral("border-image: url(:/icons/fondo_transparente.png); background-image: url(:/icons/fondo_transparente.png);"));
+        button_fix_Axis->setPixmap(QPixmap(":/icons/fix_graph_zoom.png"));
+        button_fix_Axis->setAlignment(Qt::AlignBottom | Qt::AlignRight);
+        button_fix_Axis->hide();
+        //button_maximized->show();
 
-    points.first()->setVisible(false);
+        QObject::connect(button_maximized_erase_point,SIGNAL(leftClicked()),this,SLOT(on_button_erase_point()));
+        QObject::connect(button_maximized,SIGNAL(leftClicked()),this,SLOT(maximizar_graph()));
+        QObject::connect(button_minimized,SIGNAL(leftClicked()),this,SLOT(minimize()));
+        QObject::connect(button_fix_Axis,SIGNAL(leftClicked()),this,SLOT(fix_Axis()));
+
+        PlotPoint *point = new PlotPoint(this,2,"");
+        point->setColor(QColor(255,255,255));
+
+        point->set_Item_index_in_list(0);
+
+        point->setSelectable(false);
+
+        points.append(point);
+        this->addItem(point);
+
+        points.first()->setVisible(true);
+    }
 }
 
 void Plot::enable_maximize_button(bool on){ //muestra boton para maximizar
@@ -296,7 +286,7 @@ void Plot::set_button_maximize_pos(bool up)
         button_maximized_with_other->move(button_maximized_with_other->pos().x(), 200);
     }
     else{
-        button_maximized_with_other->move(button_maximized_with_other->pos().x(), 450);
+        button_maximized_with_other->move(button_maximized_with_other->pos().x(), 480);
     }
 }
 

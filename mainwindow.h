@@ -37,6 +37,8 @@ public:
     void setupGraph_Oxy2();
     void setupGraph_EKG();
 
+    void setup_Plot_Interactions();
+
     enum state_of_app{IDLE, BUSCANDO_DISPOSITIVO, NO_ENCONTRADO, ESTABLECIENDO_CONEXION, CONECTADO, GUARDANDO_DATOS, GUARDADO, REINICIANDO, ERROR, DESCONECTADO};
 
     enum state_of_app app_state = IDLE;
@@ -63,16 +65,16 @@ public:
     int paint_now = 0;
 protected:
 
-    void paintEvent(QPaintEvent *event){  ///divide la cantidad de repaints del widget
+//    void paintEvent(QPaintEvent *event){  ///divide la cantidad de repaints del widget
 
-        if(paint_now >= 10){
-            QWidget::paintEvent(event);
-            paint_now = 0;
-        }
-        else{
-            paint_now++;
-        }
-    }
+//        if(paint_now >= 10){
+//            QWidget::paintEvent(event);
+//            paint_now = 0;
+//        }
+//        else{
+//            paint_now++;
+//        }
+//    }
 
     void mousePressEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
     {
@@ -255,6 +257,7 @@ private:
     int errores=0;
 
     qint8 picar_frec=0;
+    qint8 picar_frec_act_data=0;
     qint16 actualizar_porciento_counter=0;
 
 

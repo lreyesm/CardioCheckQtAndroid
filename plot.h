@@ -45,6 +45,8 @@ public:
 
     void setup_Graph();
 
+    void setup_Plot_variables();
+
     void set_Background_blur(QWidget* blur){background_blur = blur;}
 
     void enable_maximize_button(bool on);
