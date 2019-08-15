@@ -48,7 +48,7 @@ Bebe_Data_Class::Bebe_Data_Class(QString b, QString m){
     this->PI_data_function_OXY1_size = 0;
     this->PI_data_function_OXY2_size = 0;
 
-    for(int i=0; i < DATA_ADC_BUFFER_SIZE; i++){
+    for(quint32 i=0; i < DATA_ADC_BUFFER_SIZE; i++){
 
         this->HR_data_bebe[i]= 0;
         if(i < DATA_FUNCTION_SIZE){
@@ -57,7 +57,7 @@ Bebe_Data_Class::Bebe_Data_Class(QString b, QString m){
         }
     }
 
-    for(int i=0; i < SPO2_FUNCTION_BUFFER_SIZE; i++){
+    for(quint32 i=0; i < SPO2_FUNCTION_BUFFER_SIZE; i++){
         this->SPO2_function_OXY1_data_bebe[i]= 0;
         this->SPO2_function_OXY2_data_bebe[i]= 0;
         this->BPM_function_OXY1_data_bebe[i]= 0;
@@ -99,39 +99,39 @@ void Bebe_Data_Class::write_file(QDataStream &out){
     out<<this->PI_data_function_OXY1_size;
     out<<this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         out<<this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         out<<this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         out<<this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         out<<this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         out<<this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         out<<this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         out<<this->PI_function_OXY2_data_bebe[i];
     }
@@ -168,39 +168,39 @@ void Bebe_Data_Class::read_file(QDataStream &in){
     in>>this->PI_data_function_OXY1_size;
     in>>this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         in>>this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         in>>this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         in>>this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         in>>this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         in>>this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         in>>this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         in>>this->PI_function_OXY2_data_bebe[i];
     }
@@ -234,39 +234,39 @@ void Bebe_Data_Class::write_file_all_String_and_int_format(QDataStream &out)
     out<<this->PI_data_function_OXY1_size;
     out<<this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         out<<this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         out<<this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         out<<this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         out<<this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         out<<this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         out<<this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         out<<this->PI_function_OXY2_data_bebe[i];
     }
@@ -310,39 +310,39 @@ void Bebe_Data_Class::read_file_all_String_and_int_format(QDataStream &in)
     in>>this->PI_data_function_OXY1_size;
     in>>this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         in>>this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         in>>this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         in>>this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         in>>this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         in>>this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         in>>this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         in>>this->PI_function_OXY2_data_bebe[i];
     }
@@ -384,39 +384,39 @@ void Bebe_Data_Class::write_file_with_size_data(QDataStream &out)
     out<<this->PI_data_function_OXY1_size;
     out<<this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         out<<this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         out<<this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         out<<this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         out<<this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         out<<this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         out<<this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         out<<this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         out<<this->PI_function_OXY2_data_bebe[i];
     }
@@ -467,39 +467,39 @@ void Bebe_Data_Class::read_file_with_size_data(QDataStream &in)
     in>>this->PI_data_function_OXY1_size;
     in>>this->PI_data_function_OXY2_size;
 
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_0_data_bebe[i];
     }
-    for(int i=0; i < this->data_function_size; i++){
+    for(quint32 i=0; i < this->data_function_size; i++){
 
         in>>this->function_1_data_bebe[i];
     }
-    for(int i=0; i < this->data_adc_buffer_size; i++){
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
 
         in>>this->HR_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
 
         in>>this->SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
 
         in>>this->SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
 
         in>>this->BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
 
         in>>this->BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
 
         in>>this->PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < this->PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
 
         in>>this->PI_function_OXY2_data_bebe[i];
     }
@@ -577,23 +577,23 @@ void Bebe_Data_Class::print_bebe_data(){
     qDebug()<<"BPM Oxy2   value :  "+QString::number(this->beats_per_minute_value_average_OXY2);
     qDebug()<<"cant de dat :  "+QString::number(this->data_function_size);
 
-    for(int i=0; i < data_function_size; i++){
+    for(quint32 i=0; i < data_function_size; i++){
 
         qDebug()<<"i :"+QString::number(i)+" dato func 1: "+QString::number(this->function_0_data_bebe[i]);
     }
-    for(int i=0; i < data_function_size; i++){
+    for(quint32 i=0; i < data_function_size; i++){
 
         qDebug()<<"i :"+QString::number(i)+" dato func 2: "+QString::number(this->function_1_data_bebe[i]);
     }
-    for(int i=0; i < data_adc_buffer_size; i++){
+    for(quint32 i=0; i < data_adc_buffer_size; i++){
 
         qDebug()<<"i :"+QString::number(i)+" dato ADC funct: "+QString::number(this->function_0_data_bebe[i]);
     }
-    for(int i=0; i < SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < SPO2_data_function_OXY1_size; i++){
 
         qDebug()<<"i :"+QString::number(i)+" dato OXY 1: "+QString::number(this->SPO2_function_OXY1_data_bebe[i]);
     }
-    for(int i=0; i < SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < SPO2_data_function_OXY2_size; i++){
 
         qDebug()<<"i :"+QString::number(i)+" dato OXY 2: "+QString::number(this->SPO2_function_OXY2_data_bebe[i]);
     }
@@ -635,36 +635,36 @@ void Bebe_Data_Class::operator_equal(Bebe_Data_Class bebe){
     this->PI_data_function_OXY1_size = bebe.PI_data_function_OXY1_size;
     this->PI_data_function_OXY2_size = bebe.PI_data_function_OXY2_size;
 
-    for(int i=0; i < bebe.data_function_size; i++){
+    for(quint32 i=0; i < bebe.data_function_size; i++){
 
         this->function_0_data_bebe[i] = bebe.function_0_data_bebe[i];
         this->function_1_data_bebe[i] = bebe.function_1_data_bebe[i];
     }
-    for(int i=0; i < bebe.data_adc_buffer_size; i++){
+    for(quint32 i=0; i < bebe.data_adc_buffer_size; i++){
 
         this->HR_data_bebe[i] = bebe.HR_data_bebe[i];
     }
-    for(int i=0; i < bebe.SPO2_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < bebe.SPO2_data_function_OXY1_size; i++){
 
         this->SPO2_function_OXY1_data_bebe[i] = bebe.SPO2_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < bebe.SPO2_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < bebe.SPO2_data_function_OXY2_size; i++){
 
         this->SPO2_function_OXY2_data_bebe[i] = bebe.SPO2_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < bebe.BPM_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < bebe.BPM_data_function_OXY1_size; i++){
 
         this->BPM_function_OXY1_data_bebe[i] = bebe.BPM_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < bebe.BPM_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < bebe.BPM_data_function_OXY2_size; i++){
 
         this->BPM_function_OXY2_data_bebe[i] = bebe.BPM_function_OXY2_data_bebe[i];
     }
-    for(int i=0; i < bebe.PI_data_function_OXY1_size; i++){
+    for(quint32 i=0; i < bebe.PI_data_function_OXY1_size; i++){
 
         this->PI_function_OXY1_data_bebe[i] = bebe.PI_function_OXY1_data_bebe[i];
     }
-    for(int i=0; i < bebe.PI_data_function_OXY2_size; i++){
+    for(quint32 i=0; i < bebe.PI_data_function_OXY2_size; i++){
 
         this->PI_function_OXY2_data_bebe[i] = bebe.PI_function_OXY2_data_bebe[i];
     }

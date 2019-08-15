@@ -12,7 +12,7 @@
 #include <QDesktopWidget>
 #include "bebe_data_class.h"
 
-#define DELAY_LOOKING_BLUETOOTH 2000
+#define DELAY_LOOKING_BLUETOOTH 5000
 
 namespace Ui {
 class MainWindow;
@@ -78,14 +78,17 @@ protected:
 
     void mousePressEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
     {
+        Q_UNUSED(e);
         emit mouse_pressed();
     }
     void mouseDoubleClickEvent(QMouseEvent *e){
 
+        Q_UNUSED(e);
         emit mouse_DoubleClick();
     }
     void mouseReleaseEvent(QMouseEvent *e) ///al reimplementar esta funcion deja de funcionar el evento pressed
     {
+        Q_UNUSED(e);
         emit mouse_Release();
     }
 
