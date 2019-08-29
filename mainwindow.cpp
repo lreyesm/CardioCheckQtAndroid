@@ -143,8 +143,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Sonido del pulso---------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------------
-    beat_sound_name.prepend(mediaPath.toString());
-    ui->statusBar->showMessage(beat_sound_name);
+    //beat_sound_name.prepend(mediaPath.toString());
+    //ui->statusBar->showMessage(beat_sound_name);
     //------------------------------------------------------------------------------------------------------------------------
 
 }
@@ -855,8 +855,7 @@ void MainWindow::afterUpdateGraph()
         HR_value_count = 0;
     }
 
-    //customPlot_graph_Oxy1->xAxis->autoSubTicks();
-    //customPlot_graph_Oxy2->xAxis->autoSubTicks();
+    //La correccion de sincronizacion se realiza en el recibo de la informacion (PROCESS BUFFER)
     customPlot_graph_Oxy1->graph(0)->addData(x_axis_count, function_values_graph_0[function_value_count]);
     customPlot_graph_Oxy2->graph(0)->addData(x_axis_count, function_values_graph_1[function_value_count]);
 
@@ -869,20 +868,14 @@ void MainWindow::afterUpdateGraph()
     //Auqui divido la frecuncia de visualizacion y si esta maximizado alguno no reploteo los otros 2----------------------------------------
     //--------------------------------------------------------------------------------------------------------------------------------------
     if(picar_frec >= 3){
-        ///if(customPlot_graph_Oxy2_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
         customPlot_graph_Oxy1->replot();//QCustomPlot::rpHint);
-        ///}
         picar_frec=0;
     }
     else if(picar_frec == 2){
-        ///if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_EKG_max->isHidden()){
         customPlot_graph_Oxy2->replot();//QCustomPlot::rpHint);
-        ///}
     }
     else if(picar_frec == 1){
-        ///if(customPlot_graph_Oxy1_max->isHidden() && customPlot_graph_Oxy2_max->isHidden()){
         customPlot_graph_EKG->replot();//QCustomPlot::rpHint);
-        /// }
     }
     picar_frec++;
     //----------------------------------------------------------------------------------------------------------------------------------------
@@ -1232,16 +1225,46 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
     QString ID_string = ui->le_pant_paciente_ID->text();
     quint64 ID_copia = ID_string.toLongLong();
     bebe_temp.ID = (quint64)(ID_copia);
+
     bebe_temp.sexo = sexo_de_paciente;
+    for(int i=0; bebe_temp.sexo.length() < SEX_STRING_LENGTH;i++){
+        bebe_temp.sexo.append('&');
+    }
+
     bebe_temp.cantidad_de_pruebas = 1;
+
     bebe_temp.state = "Seguimiento";
+    for(quint16 i=0; bebe_temp.state.length() < STATE_STRING_LENGTH; i++){
+        bebe_temp.state.append('&');
+    }
+
     bebe_temp.birth_date = birth_date_paciente;
+    QString birth_date_string = bebe_temp.birth_date.toString();
+    for(quint16 i=0; birth_date_string.length() < DATE_STRING_LENGTH; i++){
+        birth_date_string.append('&');
+    }
 
     bebe_temp.baby_name = "unknow";
+    for(quint16 i=0; bebe_temp.baby_name.length() < NAMES_STRING_LENGTH; i++){
+        bebe_temp.baby_name.append('&');
+    }
     bebe_temp.mother_name = ui->le_pant_paciente_Nombre->text();
+    for(quint16 i=0; bebe_temp.mother_name.length() < NAMES_STRING_LENGTH; i++){
+        bebe_temp.mother_name.append('&');
+    }
 
     bebe_temp.date = QDate::currentDate();
+    QString date_string = bebe_temp.date.toString();
+    for(quint16 i=0; date_string.length() < DATE_STRING_LENGTH; i++){
+        date_string.append('&');
+    }
+
     bebe_temp.time = QTime::currentTime();
+    QString time_string = bebe_temp.time.toString();
+    for(quint16 i=0; time_string.length() < TIME_STRING_LENGTH; i++){
+        time_string.append('&');
+    }
+
 
     QByteArray envio_en_bytes;
 
@@ -1262,7 +1285,7 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
     ////------------------------------------------------------------------------------
 
     /// birth_date en byteArray-------------------------------------------------------------------
-    envio_en_bytes.append(QString_to_QByte_Array(bebe_temp.birth_date.toString()));
+    envio_en_bytes.append(QString_to_QByte_Array(birth_date_string));
     ////------------------------------------------------------------------------------
 
     /// baby_name en byteArray-------------------------------------------------------------------
@@ -1274,21 +1297,23 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
     ////------------------------------------------------------------------------------
 
     /// date en byteArray-------------------------------------------------------------------
-    envio_en_bytes.append(QString_to_QByte_Array(bebe_temp.date.toString()));
+    envio_en_bytes.append(QString_to_QByte_Array(date_string));
     ////------------------------------------------------------------------------------
 
     /// time en byteArray-------------------------------------------------------------------
-    envio_en_bytes.append(QString_to_QByte_Array(bebe_temp.time.toString()));
+    envio_en_bytes.append(QString_to_QByte_Array(time_string));
     ////------------------------------------------------------------------------------
 
-    envio_en_bytes.prepend(envio_en_bytes.length());
+    quint16 size_send_info = envio_en_bytes.length();
+
+    envio_en_bytes.prepend(quint16_to_QByte_Array(size_send_info));
 
     for(quint8 i=0; i<4; i++){
 
         envio_en_bytes.prepend(INIT_SEND_ID);
     }
 
-    quint8 c = envio_en_bytes.length();
+    quint32 c = envio_en_bytes.length();
 
     for(quint32 i = c; i < UART_READ_BUFFER_SIZE; i++){
 
@@ -1303,6 +1328,18 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
 void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
 {
     if(ui->pb_pant_test_Ver_Registro_Guardar->text() == "GUARDAR"){
+
+        if(ui->le_pant_paciente_Nombre->text().isEmpty() || ui->le_pant_paciente_ID->text().isEmpty() || sexo_de_paciente == "unknow"){
+
+            QMessageBox::information(this,"Informacion","Inserte correctamente los datos del paciente e intente guardar nuevamente",QMessageBox::Ok);
+            return;
+        }
+        if(porciento_de_adquirido < 100){
+
+            if(QMessageBox::No==QMessageBox::question(this,"CONFIRMACIÓN","No se ha adquirido los 5 min de datos. \n¿Desea proseguir guardadndo los datos?",QMessageBox::Ok,QMessageBox::No)){
+                return;
+            }
+        }
         if(QMessageBox::Ok==QMessageBox::question(this,"CONFIRMACIÓN","Desea guardar datos recibidos",QMessageBox::Ok,QMessageBox::No)){
 
             QFile *data_base= new QFile(database_name);
@@ -1416,15 +1453,17 @@ void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
                     bebe_object->PI_data_function_OXY2_size = function_value_count_SPO2_BPM_PI;
 
                 }else{
+
+                    //La correccion de sincronizacion se realiza en el recibo de la informacion (PROCESS BUFFER)
                     if(function_value_pos != DATA_FUNCTION_SIZE)
-                        memcpy(&(bebe_object->function_0_data_bebe[4]), &function_values_graph_0[function_value_pos], DATA_FUNCTION_SIZE - function_value_pos);
+                        memcpy(&(bebe_object->function_0_data_bebe[0]), &function_values_graph_0[function_value_pos], DATA_FUNCTION_SIZE - function_value_pos);
                     if(function_value_pos != 0)
-                        memcpy(&(bebe_object->function_0_data_bebe[DATA_FUNCTION_SIZE - function_value_pos + 4]), &function_values_graph_0[0], function_value_pos);
+                        memcpy(&(bebe_object->function_0_data_bebe[DATA_FUNCTION_SIZE - function_value_pos]), &function_values_graph_0[0], function_value_pos);
 
                     if(function_value_pos != DATA_FUNCTION_SIZE)
-                        memcpy(&(bebe_object->function_1_data_bebe[4]), &function_values_graph_1[function_value_pos], DATA_FUNCTION_SIZE - function_value_pos);
+                        memcpy(&(bebe_object->function_1_data_bebe[0]), &function_values_graph_1[function_value_pos], DATA_FUNCTION_SIZE - function_value_pos);
                     if(function_value_pos != 0)
-                        memcpy(&(bebe_object->function_1_data_bebe[DATA_FUNCTION_SIZE - function_value_pos + 4]), &function_values_graph_1[0], function_value_pos);
+                        memcpy(&(bebe_object->function_1_data_bebe[DATA_FUNCTION_SIZE - function_value_pos]), &function_values_graph_1[0], function_value_pos);
 
                     if(HR_value_pos != DATA_ADC_BUFFER_SIZE)
                         memcpy(bebe_object->HR_data_bebe, &function_values_graph_HR_16bits[HR_value_pos], (DATA_ADC_BUFFER_SIZE - HR_value_pos)*2);
@@ -1472,41 +1511,41 @@ void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
                 bebe_object->size_of_pacient_data = 0;
 
                 bebe_object->size_of_pacient_data += sizeof(bebe_object->ID);
-                bebe_object->size_of_pacient_data += (bebe_object->sexo.toLatin1().length()*2)+ 4/*sizeof(uint32_t)*/;
+                bebe_object->size_of_pacient_data += SIZEOF_SEX_STRING/*sizeof(uint32_t)*/;
                 bebe_object->size_of_pacient_data += sizeof(bebe_object->cantidad_de_pruebas);
-                bebe_object->size_of_pacient_data += (bebe_object->state.toLatin1().length()*2)+ 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += (bebe_object->birth_date.toString().length()*2) + 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += (bebe_object->baby_name.toLatin1().length()*2)+ 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += (bebe_object->mother_name.toLatin1().length()*2)+ 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += (bebe_object->date.toString().length()*2) + 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += (bebe_object->time.toString().length()*2) + 4/*sizeof(uint32_t)*/;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_bebe_value_average_OXY1);
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_bebe_value_average_OXY2);
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->beats_per_minute_value_average_OXY1);
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->beats_per_minute_value_average_OXY2);
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_value_average_OXY1);
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_value_average_OXY2);
+                bebe_object->size_of_pacient_data += SIZEOF_STATE_STRING;  ///30
+                bebe_object->size_of_pacient_data += SIZEOF_DATE_STRING;///40 >36
+                bebe_object->size_of_pacient_data += SIZEOF_NAMES_STRING;
+                bebe_object->size_of_pacient_data += SIZEOF_NAMES_STRING;///80
+                bebe_object->size_of_pacient_data += SIZEOF_DATE_STRING;///40 >36
+                bebe_object->size_of_pacient_data += SIZEOF_TIME_STRING; /// 24 >20
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_bebe_value_average_OXY1); ///1
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_bebe_value_average_OXY2); ///1
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->beats_per_minute_value_average_OXY1); ///2
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->beats_per_minute_value_average_OXY2); ///2
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_value_average_OXY1); ///2
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_value_average_OXY2); ///2
 
                 bebe_object->size_of_pacient_info = bebe_object->size_of_pacient_data;
 
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->data_function_size);
-                bebe_object->size_of_pacient_data += bebe_object->data_function_size*2;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->data_adc_buffer_size);
-                bebe_object->size_of_pacient_data += bebe_object->data_adc_buffer_size*2;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_data_function_OXY1_size);
-                bebe_object->size_of_pacient_data += bebe_object->SPO2_data_function_OXY1_size;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_data_function_OXY2_size);
-                bebe_object->size_of_pacient_data += bebe_object->SPO2_data_function_OXY2_size;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->BPM_data_function_OXY1_size);
-                bebe_object->size_of_pacient_data += bebe_object->BPM_data_function_OXY1_size*2;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->BPM_data_function_OXY2_size);
-                bebe_object->size_of_pacient_data += bebe_object->BPM_data_function_OXY2_size*2;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_data_function_OXY1_size);
-                bebe_object->size_of_pacient_data += bebe_object->PI_data_function_OXY1_size*2;
-                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_data_function_OXY2_size);
-                bebe_object->size_of_pacient_data += bebe_object->PI_data_function_OXY2_size*2;
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->data_function_size); ///4
+                bebe_object->size_of_pacient_data += bebe_object->data_function_size*2; ///37500 ->18750*2
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->data_adc_buffer_size);///4
+                bebe_object->size_of_pacient_data += bebe_object->data_adc_buffer_size*2; ////150000 -> 75000*2 ->5min
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_data_function_OXY1_size);///4
+                bebe_object->size_of_pacient_data += bebe_object->SPO2_data_function_OXY1_size; ///750
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->SPO2_data_function_OXY2_size); ///4
+                bebe_object->size_of_pacient_data += bebe_object->SPO2_data_function_OXY2_size; ///750
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->BPM_data_function_OXY1_size); ///4
+                bebe_object->size_of_pacient_data += bebe_object->BPM_data_function_OXY1_size*2; ///1500
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->BPM_data_function_OXY2_size);///4
+                bebe_object->size_of_pacient_data += bebe_object->BPM_data_function_OXY2_size*2;///1500
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_data_function_OXY1_size);///4
+                bebe_object->size_of_pacient_data += bebe_object->PI_data_function_OXY1_size*2;///1500
+                bebe_object->size_of_pacient_data += sizeof(bebe_object->PI_data_function_OXY2_size);///4
+                bebe_object->size_of_pacient_data += bebe_object->PI_data_function_OXY2_size*2;///1500
 
-                bebe_object->size_of_pacient_signals = bebe_object->size_of_pacient_data - bebe_object->size_of_pacient_info;
+                bebe_object->size_of_pacient_signals = bebe_object->size_of_pacient_data - bebe_object->size_of_pacient_info;///195032
 
                 bebe_object->size_of_pacient_data += sizeof(bebe_object->size_of_pacient_info);
                 bebe_object->size_of_pacient_data += sizeof(bebe_object->size_of_pacient_signals);
@@ -1600,7 +1639,7 @@ void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
 
 
 
-                bebe_object->write_file_with_size_data(out);
+                bebe_object->write_file_with_size_data_fix_strings(out);
 
                 data_base->close();
 
@@ -1640,6 +1679,8 @@ void MainWindow::on_pb_pant_test_Ver_Registro_Guardar()
         porciento_de_adquirido = 0;
 
         ver_registro_counter=0;
+
+        x_axis_count_recorded=0;
 
         clear_graphs(true);
 
@@ -1693,15 +1734,14 @@ void MainWindow::on_lw_pant_base_de_datos_pacientes_itemClicked(QListWidgetItem 
 
         while(!data_base->atEnd()){
 
-            //bebe_object->read_file_all_String_and_int_format(in);
-            bebe_object->read_file_with_size_data_only_pacient_info(in);
+            bebe_object->read_file_with_size_data_only_pacient_info_fix_strings(in);
 
             data_base->seek(bebe_object->posicion_en_archivo + bebe_object->size_of_pacient_data);
 
             if(item->text().left(15).contains(QString::number(bebe_object->ID)) && item->text().contains(bebe_object->mother_name)){
 
                 data_base->seek(bebe_object->posicion_en_archivo);
-                bebe_object->read_file_with_size_data(in);
+                bebe_object->read_file_with_size_data_fix_strings(in);
 
                 ui->l_paciente_datos_nombre->setText(bebe_object->mother_name);
                 ui->l_paciente_datos_ID->setText(QString::number(bebe_object->ID));
@@ -2300,8 +2340,7 @@ bool MainWindow::cargar_base_de_datos()
 
         while(!data_base->atEnd()){
 
-            //bebe_object->read_file_all_String_and_int_format(in);
-            bebe_object->read_file_with_size_data_only_pacient_info(in);
+            bebe_object->read_file_with_size_data_only_pacient_info_fix_strings(in);
 
             data_base->seek(bebe_object->posicion_en_archivo + bebe_object->size_of_pacient_data);
 
@@ -2421,17 +2460,11 @@ QByteArray MainWindow::quint64_to_QByte_Array(quint64 integer){
 
 QByteArray MainWindow::quint16_to_QByte_Array(quint16 integer){
 
-    QByteArray envio_en_bytes, envio_en_bytes_reverse;
+    QByteArray envio_en_bytes;
 
-    envio_en_bytes_reverse.append((char*)&(integer));
+    envio_en_bytes.append(integer>>8);
+    envio_en_bytes.append(integer & 0x0FF);
 
-    envio_en_bytes_reverse.prepend(0x0f);
-    envio_en_bytes_reverse[1]=0;
-
-    for(int i=1; i >= 0; i--){
-
-        envio_en_bytes.append(envio_en_bytes_reverse.at(i));
-    }
     return envio_en_bytes;
 }
 

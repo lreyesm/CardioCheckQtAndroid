@@ -284,7 +284,7 @@ private:
 
 
     void update_data_pacient_in_labels(bool desde_pantalla_principal);
-    QString sexo_de_paciente="masculino";
+    QString sexo_de_paciente="unknow";
     QDate birth_date_paciente = QDate(1991,7,16);
 
     QTimer timer_time;

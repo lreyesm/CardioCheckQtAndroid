@@ -353,17 +353,17 @@ void Bebe_Data_Class::read_file_all_String_and_int_format(QDataStream &in)
 //-----------------------------------------------------------------------------------------------------------------------
 void Bebe_Data_Class::write_file_with_size_data(QDataStream &out)
 {
-    out<<this->posicion_en_archivo;
-    out<<this->cantidad_de_pacientes;
-    out<<this->numero_de_paciente;
-    out<<this->size_of_pacient_data;
-    out<<this->size_of_pacient_info;
-    out<<this->size_of_pacient_signals;
+    out<<this->posicion_en_archivo;    ///8
+    out<<this->cantidad_de_pacientes;  ///4
+    out<<this->numero_de_paciente;     ///4
+    out<<this->size_of_pacient_data;   ///4
+    out<<this->size_of_pacient_info;   ///4
+    out<<this->size_of_pacient_signals;///4
 
-    out<<this->ID;
-    out<<this->sexo;
-    out<<this->cantidad_de_pruebas;
-    out<<this->state;
+    out<<this->ID;                     ///8
+    out<<this->sexo;                   ///4+lentgh*2 total -> 24 de max
+    out<<this->cantidad_de_pruebas;    ///4
+    out<<this->state;                  ///30
     out<<(this->birth_date.toString());
     out<<this->baby_name;
     out<<this->mother_name;
@@ -422,6 +422,208 @@ void Bebe_Data_Class::write_file_with_size_data(QDataStream &out)
     }
 }
 
+void Bebe_Data_Class::write_file_with_size_data_fix_strings(QDataStream &out)
+{
+    out<<this->posicion_en_archivo;    ///8
+    out<<this->cantidad_de_pacientes;  ///4
+    out<<this->numero_de_paciente;     ///4
+    out<<this->size_of_pacient_data;   ///4
+    out<<this->size_of_pacient_info;   ///4
+    out<<this->size_of_pacient_signals;///4
+
+    out<<this->ID;                     ///8
+    for(quint16 i=0; sexo.length() < SEX_STRING_LENGTH; i++){
+        sexo.append('&');
+    }
+    out<<this->sexo;                   ///4+lentgh*2 total -> 24 de max
+    out<<this->cantidad_de_pruebas;    ///4
+    for(quint16 i=0; state.length() < STATE_STRING_LENGTH; i++){
+        state.append('&');
+    }
+    out<<this->state;                  ///30
+
+    QString temp_string = this->birth_date.toString();
+    for(quint16 i=0; temp_string.length() < DATE_STRING_LENGTH; i++){
+        temp_string.append('&');
+    }
+    out<<(temp_string);
+
+    for(quint16 i=0; baby_name.length() < NAMES_STRING_LENGTH; i++){
+        baby_name.append('&');
+    }
+    out<<this->baby_name;
+    for(quint16 i=0; mother_name.length() < NAMES_STRING_LENGTH; i++){
+        mother_name.append('&');
+    }
+    out<<this->mother_name;
+
+    temp_string = this->date.toString();
+    for(quint16 i=0; temp_string.length() < DATE_STRING_LENGTH; i++){
+        temp_string.append('&');
+    }
+    out<<(temp_string);
+
+    temp_string = this->time.toString();
+    for(quint16 i=0; temp_string.length() < TIME_STRING_LENGTH; i++){
+        temp_string.append('&');
+    }
+    out<<(temp_string);
+
+
+    out<<this->SPO2_bebe_value_average_OXY1;
+    out<<this->SPO2_bebe_value_average_OXY2;
+    out<<this->beats_per_minute_value_average_OXY1;
+    out<<this->beats_per_minute_value_average_OXY2;
+    out<<this->PI_value_average_OXY1;
+    out<<this->PI_value_average_OXY2;
+    out<<this->data_function_size;
+    out<<this->data_adc_buffer_size;
+    out<<this->SPO2_data_function_OXY1_size;
+    out<<this->SPO2_data_function_OXY2_size;
+    out<<this->BPM_data_function_OXY1_size;
+    out<<this->BPM_data_function_OXY2_size;
+    out<<this->PI_data_function_OXY1_size;
+    out<<this->PI_data_function_OXY2_size;
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        out<<this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        out<<this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        out<<this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        out<<this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        out<<this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        out<<this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        out<<this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        out<<this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        out<<this->PI_function_OXY2_data_bebe[i];
+    }
+}
+
+
+void Bebe_Data_Class::write_file_with_fix_size(QDataStream &out)
+{
+    quint8 uchar_empty =0;
+
+    quint32 temp_size_of_pacient_data = size_of_pacient_data;
+    size_of_pacient_data = SIZEOF_PACIENT_DATA;
+
+    out<<this->posicion_en_archivo;    ///8
+    out<<this->cantidad_de_pacientes;  ///4
+    out<<this->numero_de_paciente;     ///4
+    out<<this->size_of_pacient_data;   ///4
+    out<<this->size_of_pacient_info;   ///4
+    out<<this->size_of_pacient_signals;///4
+
+    out<<this->ID;                     ///8
+    out<<this->sexo;                   ///4+lentgh*2 total -> 24 de max
+    for (quint16  i=0;i < SIZEOF_SEX_STRING - ((sexo.length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<this->cantidad_de_pruebas;    ///4
+    out<<this->state;                  ///30
+    for (quint16  i=0;i < SIZEOF_STATE_STRING - ((state.length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<(this->birth_date.toString());///40
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((birth_date.toString().length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<this->baby_name;              ///80
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((baby_name.length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<this->mother_name;            ///80
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((mother_name.length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<(this->date.toString());      ///40
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((date.toString().length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<(this->time.toString());      ///24
+    for (quint16  i=0;i < SIZEOF_TIME_STRING - ((time.toString().length()*2)+4); i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+    out<<this->SPO2_bebe_value_average_OXY1; ///1
+    out<<this->SPO2_bebe_value_average_OXY2; ///1
+    out<<this->beats_per_minute_value_average_OXY1; ///2
+    out<<this->beats_per_minute_value_average_OXY2; ///2
+    out<<this->PI_value_average_OXY1;  ///2
+    out<<this->PI_value_average_OXY2;  ///2
+    out<<this->data_function_size;     ///4
+    out<<this->data_adc_buffer_size;   ///4
+    out<<this->SPO2_data_function_OXY1_size; ///4
+    out<<this->SPO2_data_function_OXY2_size; ///4
+    out<<this->BPM_data_function_OXY1_size;  ///4
+    out<<this->BPM_data_function_OXY2_size;  ///4
+    out<<this->PI_data_function_OXY1_size;   ///4
+    out<<this->PI_data_function_OXY2_size;   ///4
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        out<<this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        out<<this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        out<<this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        out<<this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        out<<this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        out<<this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        out<<this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        out<<this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        out<<this->PI_function_OXY2_data_bebe[i];
+    }
+
+    for (quint16  i=0;i < SIZEOF_PACIENT_DATA - temp_size_of_pacient_data; i++) {
+        out<<uchar_empty;///rellenando con caracter vacio
+    }
+}
 //Esta funcion me lee en un dataStream los datos de bebe para luego guardarlo en archivos con tamaños de archivo----------------------------
 //-----------------------------------------------------------------------------------------------------------------------
 void Bebe_Data_Class::read_file_with_size_data(QDataStream &in)
@@ -458,6 +660,295 @@ void Bebe_Data_Class::read_file_with_size_data(QDataStream &in)
     in>>this->beats_per_minute_value_average_OXY2;
     in>>this->PI_value_average_OXY1;
     in>>this->PI_value_average_OXY2;
+    in>>this->data_function_size;
+    in>>this->data_adc_buffer_size;
+    in>>this->SPO2_data_function_OXY1_size;
+    in>>this->SPO2_data_function_OXY2_size;
+    in>>this->BPM_data_function_OXY1_size;
+    in>>this->BPM_data_function_OXY2_size;
+    in>>this->PI_data_function_OXY1_size;
+    in>>this->PI_data_function_OXY2_size;
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        in>>this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        in>>this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        in>>this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        in>>this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        in>>this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        in>>this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        in>>this->PI_function_OXY2_data_bebe[i];
+    }
+}
+
+void Bebe_Data_Class::read_file_with_size_data_fix_strings(QDataStream &in){
+    QString temp_string;
+
+    in>>this->posicion_en_archivo;
+    in>>this->cantidad_de_pacientes;
+    in>>this->numero_de_paciente;
+    in>>this->size_of_pacient_data;
+    in>>this->size_of_pacient_info;
+    in>>this->size_of_pacient_signals;
+
+    in>>this->ID;
+    in>>this->sexo;
+    sexo.remove(QChar('&'));
+
+    in>>this->cantidad_de_pruebas;
+
+    in>>this->state;
+    state.remove(QChar('&'));
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    birth_date = QDate::fromString(temp_string);
+
+    in>>this->baby_name;
+    baby_name.remove(QChar('&'));
+    in>>this->mother_name;
+    mother_name.remove(QChar('&'));
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    date = QDate::fromString(temp_string);
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    time = QTime::fromString(temp_string);
+
+    in>>this->SPO2_bebe_value_average_OXY1;
+    in>>this->SPO2_bebe_value_average_OXY2;
+    in>>this->beats_per_minute_value_average_OXY1;
+    in>>this->beats_per_minute_value_average_OXY2;
+    in>>this->PI_value_average_OXY1;
+    in>>this->PI_value_average_OXY2;
+    in>>this->data_function_size;
+    in>>this->data_adc_buffer_size;
+    in>>this->SPO2_data_function_OXY1_size;
+    in>>this->SPO2_data_function_OXY2_size;
+    in>>this->BPM_data_function_OXY1_size;
+    in>>this->BPM_data_function_OXY2_size;
+    in>>this->PI_data_function_OXY1_size;
+    in>>this->PI_data_function_OXY2_size;
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        in>>this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        in>>this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        in>>this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        in>>this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        in>>this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        in>>this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        in>>this->PI_function_OXY2_data_bebe[i];
+    }
+}
+
+void Bebe_Data_Class::read_file_with_fix_size(QDataStream &in)
+{
+    QString temp_string;
+    quint8 uchar_empty =0;
+
+    in>>this->posicion_en_archivo;
+    in>>this->cantidad_de_pacientes;
+    in>>this->numero_de_paciente;
+    in>>this->size_of_pacient_data;
+    in>>this->size_of_pacient_info;
+    in>>this->size_of_pacient_signals;
+
+    in>>this->ID;
+    in>>this->sexo;
+    for (quint16  i=0;i < SIZEOF_SEX_STRING - ((sexo.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->cantidad_de_pruebas;
+    in>>this->state;
+    for (quint16  i=0;i < SIZEOF_STATE_STRING - ((state.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    birth_date = QDate::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((birth_date.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->baby_name;
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((baby_name.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->mother_name;
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((mother_name.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    date = QDate::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((date.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    time = QTime::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_TIME_STRING - ((time.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->SPO2_bebe_value_average_OXY1;
+    in>>this->SPO2_bebe_value_average_OXY2;
+    in>>this->beats_per_minute_value_average_OXY1;
+    in>>this->beats_per_minute_value_average_OXY2;
+    in>>this->PI_value_average_OXY1;
+    in>>this->PI_value_average_OXY2;
+    in>>this->data_function_size;
+    in>>this->data_adc_buffer_size;
+    in>>this->SPO2_data_function_OXY1_size;
+    in>>this->SPO2_data_function_OXY2_size;
+    in>>this->BPM_data_function_OXY1_size;
+    in>>this->BPM_data_function_OXY2_size;
+    in>>this->PI_data_function_OXY1_size;
+    in>>this->PI_data_function_OXY2_size;
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        in>>this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        in>>this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        in>>this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        in>>this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        in>>this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        in>>this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        in>>this->PI_function_OXY2_data_bebe[i];
+    }
+}
+
+void Bebe_Data_Class::read_file_with_fix_size_pacient_info(QDataStream &in)
+{
+    QString temp_string;
+    quint8 uchar_empty =0;
+
+    in>>this->posicion_en_archivo;
+    in>>this->cantidad_de_pacientes;
+    in>>this->numero_de_paciente;
+    in>>this->size_of_pacient_data;
+    in>>this->size_of_pacient_info;
+    in>>this->size_of_pacient_signals;
+
+    in>>this->ID;
+    in>>this->sexo;
+    for (quint16  i=0;i < SIZEOF_SEX_STRING - ((sexo.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->cantidad_de_pruebas;
+    in>>this->state;
+    for (quint16  i=0;i < SIZEOF_STATE_STRING - ((state.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    birth_date = QDate::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((birth_date.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->baby_name;
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((baby_name.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->mother_name;
+    for (quint16  i=0;i < SIZEOF_NAMES_STRING - ((mother_name.length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    date = QDate::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_DATE_STRING - ((date.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>temp_string;
+    time = QTime::fromString(temp_string);
+    for (quint16  i=0;i < SIZEOF_TIME_STRING - ((time.toString().length()*2)+4); i++) {
+        in>>uchar_empty;///rellenando con caracter vacio
+    }
+    in>>this->SPO2_bebe_value_average_OXY1;
+    in>>this->SPO2_bebe_value_average_OXY2;
+    in>>this->beats_per_minute_value_average_OXY1;
+    in>>this->beats_per_minute_value_average_OXY2;
+    in>>this->PI_value_average_OXY1;
+    in>>this->PI_value_average_OXY2;
+}
+
+void Bebe_Data_Class::read_file_with_fix_size_pacient_signals(QDataStream &in)
+{
     in>>this->data_function_size;
     in>>this->data_adc_buffer_size;
     in>>this->SPO2_data_function_OXY1_size;
@@ -549,6 +1040,100 @@ void Bebe_Data_Class::read_file_with_size_data_only_pacient_info(QDataStream &in
     in>>this->BPM_data_function_OXY2_size;
     in>>this->PI_data_function_OXY1_size;
     in>>this->PI_data_function_OXY2_size;
+}
+
+void Bebe_Data_Class::read_file_with_size_data_only_pacient_info_fix_strings(QDataStream &in)
+{
+    QString temp_string;
+
+    in>>this->posicion_en_archivo;
+    in>>this->cantidad_de_pacientes;
+    in>>this->numero_de_paciente;
+    in>>this->size_of_pacient_data;
+    in>>this->size_of_pacient_info;
+    in>>this->size_of_pacient_signals;
+
+    in>>this->ID;
+    in>>this->sexo;
+    sexo.remove(QChar('&'));
+
+    in>>this->cantidad_de_pruebas;
+
+    in>>this->state;
+    state.remove(QChar('&'));
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    birth_date = QDate::fromString(temp_string);
+
+    in>>this->baby_name;
+    baby_name.remove(QChar('&'));
+    in>>this->mother_name;
+    mother_name.remove(QChar('&'));
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    date = QDate::fromString(temp_string);
+
+    in>>temp_string;
+    temp_string.remove(QChar('&'));
+    time = QTime::fromString(temp_string);
+
+    in>>this->SPO2_bebe_value_average_OXY1;
+    in>>this->SPO2_bebe_value_average_OXY2;
+    in>>this->beats_per_minute_value_average_OXY1;
+    in>>this->beats_per_minute_value_average_OXY2;
+    in>>this->PI_value_average_OXY1;
+    in>>this->PI_value_average_OXY2;
+}
+
+void Bebe_Data_Class::read_file_with_size_data_only_pacient_signals_fix_strings(QDataStream &in){
+
+    in>>this->data_function_size;
+    in>>this->data_adc_buffer_size;
+    in>>this->SPO2_data_function_OXY1_size;
+    in>>this->SPO2_data_function_OXY2_size;
+    in>>this->BPM_data_function_OXY1_size;
+    in>>this->BPM_data_function_OXY2_size;
+    in>>this->PI_data_function_OXY1_size;
+    in>>this->PI_data_function_OXY2_size;
+
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_0_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_function_size; i++){
+
+        in>>this->function_1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->data_adc_buffer_size; i++){
+
+        in>>this->HR_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY1_size; i++){
+
+        in>>this->SPO2_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->SPO2_data_function_OXY2_size; i++){
+
+        in>>this->SPO2_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY1_size; i++){
+
+        in>>this->BPM_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->BPM_data_function_OXY2_size; i++){
+
+        in>>this->BPM_function_OXY2_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY1_size; i++){
+
+        in>>this->PI_function_OXY1_data_bebe[i];
+    }
+    for(quint32 i=0; i < this->PI_data_function_OXY2_size; i++){
+
+        in>>this->PI_function_OXY2_data_bebe[i];
+    }
 }
 
 void Bebe_Data_Class::read_file_with_size_data_only_pacient_size(QDataStream &in)

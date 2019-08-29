@@ -77,7 +77,7 @@
 #define PI_FUNCTION_BUFFER_SIZE SPO2_FUNCTION_BUFFER_SIZE
 
 
-#define UART_READ_BUFFER_SIZE 256
+#define UART_READ_BUFFER_SIZE 350
 
 
 #define TIME_GRAPH_RANGE 8 //tiempo de actualizacion de ventana de graficas en segundos
@@ -88,6 +88,18 @@
 
 #define SUMA_DE_PORCIENTO_RECIBIDO (((float)ADC_BUFFER_SIZE/DATA_ADC_BUFFER_SIZE)*100)
 
+
+#define  SIZEOF_SEX_STRING         24
+#define  SEX_STRING_LENGTH         (int)((SIZEOF_SEX_STRING-4)/2)
+#define  SIZEOF_STATE_STRING       30
+#define  STATE_STRING_LENGTH       (int)((SIZEOF_STATE_STRING-4)/2)
+#define  SIZEOF_DATE_STRING        40
+#define  DATE_STRING_LENGTH       (int)((SIZEOF_DATE_STRING-4)/2)
+#define  SIZEOF_NAMES_STRING       80
+#define  NAMES_STRING_LENGTH       (int)((SIZEOF_NAMES_STRING-4)/2)
+#define  SIZEOF_TIME_STRING        24
+#define  TIME_STRING_LENGTH       (int)((SIZEOF_TIME_STRING-4)/2)
+#define  SIZEOF_PACIENT_DATA       195500
 
 class Bebe_Data_Class
 {
@@ -109,15 +121,26 @@ public:
     void write_file_with_size_data(QDataStream &);
     void read_file_with_size_data(QDataStream &);
 
+    void write_file_with_fix_size(QDataStream &);
+    void read_file_with_fix_size(QDataStream &);
+    void read_file_with_fix_size_pacient_info(QDataStream &);
+    void read_file_with_fix_size_pacient_signals(QDataStream &);
+
     void read_file_with_size_data_only_pacient_info(QDataStream &);
     void read_file_with_size_data_only_pacient_size(QDataStream &);
+
+    void read_file_with_size_data_fix_strings(QDataStream &in);
+    void write_file_with_size_data_fix_strings(QDataStream &out);
+
+    void read_file_with_size_data_only_pacient_info_fix_strings(QDataStream &in);
+    void read_file_with_size_data_only_pacient_signals_fix_strings(QDataStream &in);
 
     void print_bebe_data();
 
     quint64 posicion_en_archivo;
     quint32 cantidad_de_pacientes;
     quint32 numero_de_paciente;
-    quint32 size_of_pacient_data;
+    quint32 size_of_pacient_data = SIZEOF_PACIENT_DATA;
     quint32 size_of_pacient_info;
     quint32 size_of_pacient_signals;
     quint64 ID;
@@ -153,6 +176,8 @@ public:
     quint32 BPM_data_function_OXY2_size;
     quint32 PI_data_function_OXY1_size;
     quint32 PI_data_function_OXY2_size;
+
+
 
 };
 
