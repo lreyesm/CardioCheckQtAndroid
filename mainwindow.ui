@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>7000</width>
-    <height>2000</height>
+    <width>1280</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -3663,7 +3663,7 @@ font: 57 16pt &quot;Alegreya Sans Medium&quot;;
 font: 25 22pt &quot;Alegreya Sans Light&quot;;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>Probando</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="le_pant_paciente_ID">
@@ -3682,7 +3682,7 @@ font: 57 16pt &quot;Alegreya Sans Medium&quot;;
 font: 25 22pt &quot;Alegreya Sans Light&quot;;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>55050555555</string>
      </property>
     </widget>
     <widget class="QLabel" name="pb_pant_paciente_fecha_nacimiento">

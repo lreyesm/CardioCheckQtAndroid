@@ -1208,6 +1208,11 @@ void MainWindow::on_pb_pant_test_Graficar_Iniciar()
 {
     ////ui->statusBar->showMessage(QString("Chequeo ok"));
     //QObject::disconnect(socket,SIGNAL(readyRead()),this,SLOT(readSerial_initilization()));
+    if(ui->le_pant_paciente_Nombre->text().isEmpty() || ui->le_pant_paciente_ID->text().isEmpty() || sexo_de_paciente == "unknow"){
+
+        QMessageBox::information(this,"Informacion","Inserte correctamente los datos del paciente e intente guardar nuevamente",QMessageBox::Ok);
+        return;
+    }
     clear_graphs(true, true);
 
     //ui->pb_pant_test_pause_play->show();
@@ -2556,6 +2561,8 @@ void MainWindow::process_received_buffer(quint8 *receive_bytes){
         function_values_graph_HR_16bits[i + HR_value_pos] = ((((receive_bytes[c + DATA_GRAPH_HR_INIT_BUFFER_POS]<<8)& 0x0FF00)|((receive_bytes[c+1+DATA_GRAPH_HR_INIT_BUFFER_POS])& 0x0FF)));
     }
     //-------------------------------------------------------------------------------------------------------------------------------------
+    //memcpy( &function_values_graph_0[function_value_pos], &receive_bytes[DATA_GRAPH_FT_INIT_BUFFER_POS], FUNCTION_BUFFER_SIZE);
+    //memcpy( &function_values_graph_1[function_value_pos], &receive_bytes[DATA_GRAPH_FT_2_INIT_BUFFER_POS], FUNCTION_BUFFER_SIZE);
 
     function_value_pos+=FUNCTION_BUFFER_SIZE;
     HR_value_pos+=ADC_BUFFER_SIZE;

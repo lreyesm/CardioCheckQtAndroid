@@ -285,7 +285,7 @@ private:
 
     void update_data_pacient_in_labels(bool desde_pantalla_principal);
     QString sexo_de_paciente="unknow";
-    QDate birth_date_paciente = QDate(1991,7,16);
+    QDate birth_date_paciente = QDate(1955,5,5);
 
     QTimer timer_time;
     QStringList lista_de_pacientes;
